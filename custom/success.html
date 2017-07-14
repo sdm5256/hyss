@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			body{
+				background-color: #fff;
+			}
+			.mui-content{
+				background: #fff;
+				
+			}
+			.success{
+				padding: 60px 40px ;
+			}
+			.suc-img img{
+				display: block;
+				width: 95px;
+				height: 95px;
+				margin: 0 auto;
+			}
+			.suc-img p{
+				margin-top: 24px;
+				text-align: center;
+				color: #333;
+				font-size: 18px;
+				margin-bottom: 20px;
+			}
+			.order-msg {
+				color: #666;
+				font-size: 14px;
+				margin-bottom: 12px;
+			}
+			.order-msg  .strong{
+				padding-left: 16px;
+				color: #E43330;
+				font-size: 16px;
+			}
+			.order-msg .way{
+				padding-left: 16px;
+				color: #333;
+				font-size: 14px;
+			}
+			.detail{
+				display: none;
+			}
+			.buzou{
+				margin:0px;
+				color: #333;
+				font-size: 14px;
+				line-height: 26px;
+			}
+			.btns{
+				margin-top: 32px ;
+			}
+			.btns a:last-child{
+				margin-left: 40px;
+			}
+			.time{
+				margin-top: 32px ;
+				color: #333;
+				font-size: 16px;
+			}
+			.time span{
+				color: #E43330;
+				padding-right: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="success">
+				<div class="suc-img">
+					<img src="img/ok.png"/>
+					<p >感谢您，订单提交成功</p>
+				</div>
+				<div class="order-msg">
+					<span>商品总额</span><span class="strong">1213元</span>
+				</div>
+				<div class="order-msg">
+					<span>付款方式</span><span class="way">微信支付</span>
+				</div>
+				<div class="order-msg">
+					<span>订单状态</span><span class="way">待处理</span>
+				</div>
+				<div class="detail">
+					<p class="buzou">查看订单详情，请关注社科文献出版社的微信号：ssapcn</p>
+					<p class="buzou">您可以在读者服务 > 我的订单中查看您的订单信息</p>
+					<div class="btns">
+						<a>查看订单</a><a>返回书单页</a>
+					</div>
+				</div>
+				<div class="time">
+					<span class="num">3</span>秒后，系统将自动跳转回首页
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+    <script src="js/zepto.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		var count = 3;
+		function counts(){
+			$('.num').text(--count)
+			if(count==0){
+
+				 return;	
+			}
+			setTimeout(counts,3000);
+		}
+		setTimeout(counts,3000);
+
+	</script>
+
+</html>

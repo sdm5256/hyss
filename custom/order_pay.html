@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.mui-content{
+				background: #fff;
+			}
+			.pay-title{
+				color: #000;
+				font-size: 18px;
+				padding: 20px 15px 10px 15px;
+				margin: 0;
+			}
+			.book-list li {
+				position: relative;
+				padding: 0px 15px;
+			}
+			.book-list li:after{
+				width: 90%;
+			}
+			.book-list li span{
+				font-weight: bolder;	
+			}	
+			.book-list li.mui-media label{
+				padding-left: 28px;
+			}
+			.book-list li.mui-media input[type=radio]{
+				left: 0px;
+				top: 8px;
+			}
+			.book-list li.mui-media input[type=radio]:before{
+				font-size: 22px;
+			}
+			.book-list li.mui-media input[type=radio]:checked:before{
+				content: '\e442';
+			}
+			.outline>span{
+				display: inline-block;
+				padding-top: 10px;
+			}
+			.outline>p{
+				padding-top: 10px;
+			}
+			.fresh {
+				padding: 10px 15px 15px 15px;
+			}
+			.btnhide{
+				display: none;
+				position: relative;
+			}
+			.btnhide .mui-spinner{
+				position: absolute;
+				top: 5px;
+				left: 45%;
+				z-index: 3;
+			}
+			.btnhide button{
+				height: 33px;
+			}
+			.fresh button{
+				width: 100%;
+				background: #efefef;
+			}
+			.fresh>div:last-child{
+				padding: 18px 0px 10px 0px;
+			}
+			.fresh>div:last-child span{
+				position: relative;
+				float: right;
+				margin-right: 20px;
+				color: #007AFF;
+			}
+			.fresh>div:last-child span:before{
+				position: absolute;
+				top: 0;
+				left: -16px;
+				content: '￥';
+			}
+			.goodscar {
+				/*display: none;*/
+				position: fixed;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				height: 50px;
+				background: #fff;
+			}
+			
+			.goodscar>div {
+				position: relative;
+				float: left;
+				width: 70%;
+				height: 100%;
+				line-height: 50px;
+				text-align: center;
+				/* background: #404040;
+    			color: #fff;
+				 */
+			}
+			
+			.goodscar span.icon-car {
+				display: inline-block;
+				float: left;
+				background: url(img/gouwuche.png) no-repeat 100% 7px;
+				background-size: 37px 31px;
+				width: 80px;
+				height: 100%;
+				vertical-align: middle;
+				margin-right: 40px;
+			}
+			
+			.goodscar span.goodnum {
+				position: absolute;
+				top: 0;
+				left: 80px;
+				background: orangered;
+				border-radius: 50%;
+				width: 20px;
+				height: 22px;
+				color: #fff;
+				line-height: 22px;
+				text-align: center;
+				font-size: 12px;
+			}
+			.goodscar .allprice{
+				position: relative;
+				display: inline-block;
+				/*color: #007AFF;*/
+			}
+			.goodscar .allprice:before{
+				position: absolute;
+				top: 0;
+				left: -15px;
+				content: "￥";
+			}
+			.goodscar a {
+				float: right;
+				background: orangered;
+				width: 30%;
+				height: 100%;
+				color: #fff;
+				line-height: 50px;
+				text-align: center;
+			}
+			
+			.book-list:before,
+			.msg:before {
+				background: #fff;
+			}
+			
+			.sumprice{
+				padding: 5px 5px 13px 5px;
+			}
+			.sumprice span{
+				position: relative;
+				float: right;
+			}
+			.sumprice span:before{
+				position: absolute;
+				top: 0px;
+				left: -13px;
+				content: "￥";
+				width: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">订单支付</h1>
+		</header>
+		<div class="mui-content">
+			<p class="pay-title">请选择支付方式：</p>
+			<ul class="mui-table-view book-list">
+				<li class="mui-table-view-cell mui-media">
+					<span>线上支付</span>
+					<div class="mui-input-row mui-radio mui-left">
+						<label>微信支付</label>
+						<input name="radio1" type="radio" checked>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media outline">
+					<span class="">线下支付</span>
+					<p>选择如下方式支付的请找销售人员确认收款</p>
+					<div class="mui-input-row mui-radio mui-left">
+						<label>公务卡支付</label>
+						<input name="radio1" type="radio" >
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>支付宝面对面支付</label>
+						<input name="radio1" type="radio" >
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>现金支付</label>
+						<input name="radio1" type="radio" >
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>个人银行卡支付</label>
+						<input name="radio1" type="radio" >
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>对公转账</label>
+						<input name="radio1" type="radio" >
+					</div>
+				</li>
+			</ul>
+			<div class="fresh">
+				<div>
+					<div class="btnshow">
+						<button type="button">价格刷新</button>
+					</div>
+					<div class="btnhide">
+						<span class="mui-spinner"></span><button type="button" disabled="true"></button>
+					</div>
+				</div>
+				<div >
+					商品总额<span>278.6</span>
+				</div>
+			</div>
+			<div class="goodscar ">
+				<div>
+					<!--<span class="icon-car"></span><span class="goodnum">0</span>-->
+					<span class="allprice">0</span>
+				</div>
+				<a href="javascript:;" class="xiadan">确认支付</a>
+			</div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+    <script src="js/zepto.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		mui(".mui-bar-nav").on('tap','.mui-action-back' ,function() {
+			mui.openWindow({
+				url: "product_detail.html",
+				id: "",
+				waiting: {
+					autoShow: false
+				}
+			});
+		})
+		
+	</script>
+
+</html>

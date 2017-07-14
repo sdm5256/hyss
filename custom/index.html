@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.book-list li {
+				position: relative;
+			}
+			
+			.book-list .mui-media>a img {
+				width: 100px;
+				height: 120px;
+				max-width: 100px;
+			}
+			
+			.mui-content .title {
+				background: #fff;
+				height: 50px;
+				line-height: 50px;
+				padding: 0px 15px;
+			}
+			
+			.chose select {
+				width: 50%;
+				padding: 5px 8px;
+				margin-left: 8px;
+				border: 1px solid #6D6D72!important;
+			}
+			
+			.book-class-name {
+				padding: 10px 15px 0px 15px;
+				font-size: 15px;
+			}
+			
+			.book-title {
+				word-wrap: break-word;
+				word-break: break-all;
+				white-space: normal;
+			}
+			
+			.addgoods {
+				position: absolute;
+				right: 10px;
+				bottom: 10px;
+			}
+			
+			.addgoods span {
+				display: inline-block;
+				width: 25px;
+				height: 25px;
+				line-height: 25px;
+				text-align: center;
+				vertical-align: middle;
+			}
+			
+			.addgoods .jia {
+				background: url(img/jia1.png) no-repeat;
+				background-size: 25px 25px;
+			}
+			
+			.addgoods .jian {
+				background: url(img/jian1.png) no-repeat;
+				background-size: 25px 25px;
+			}
+			
+			.oldprice {
+				text-decoration: line-through;
+			}
+			
+			.newprice {
+				color: #333333;
+			}
+			
+			.telmsg {
+				/*padding-bottom: 52px;*/
+			}
+			
+			.telmsg .title {
+				text-align: center;
+			}
+			
+			.telmsg .addres {
+				position: relative;
+			}
+			
+			.addres span:first-child {
+				position: absolute;
+				top: 11px;
+				left: 15px;
+			}
+			
+			.addres span:last-child {
+				display: inline-block;
+				margin-left: 85px;
+				line-height: 23px;
+				word-wrap: break-word;
+				word-break: break-all;
+				white-space: normal;
+			}
+			
+			.goodscar {
+				position: fixed;
+				left: 0;
+				bottom: -50px;
+				z-index: 1000;
+				width: 100%;
+				min-height: 50px;
+				background: #fff;
+				-webkit-transition: bottom 0.6s;
+				-moz-transition: bottom 0.6s;
+				-o-transition: bottom 0.6s;
+				transition: bottom 0.6s;
+			}
+			
+			.goodscar .good-list {
+				display: none;
+				border-top: 1px solid #c8c7cc;
+				max-height: 470px;
+				overflow-y: auto;
+			}
+			
+			.good-list .clear-goods {
+				background: #efeff4;
+				padding: 10px 0px;
+				text-align: right;
+			}
+			
+			.clear-goods p {
+				position: relative;
+				display: inline-block;
+				margin-bottom: 0;
+				width: 100px;
+				margin-right: 15px;
+			}
+			
+			.clear-goods p>span {
+				position: relative;
+				top: 2px;
+				left: 0;
+			}
+			
+			.clearbt {
+				zoom: 1;
+			}
+			
+			.clearbt:after {
+				display: block;
+				clear: both;
+				content: '.';
+				width: 0;
+				height: 0;
+				visibility: hidden;
+			}
+			
+			.good-list .writer {
+				padding-top: 10px;
+				width: 73%;
+			}
+			
+			.good-list .writer>p {
+				float: left;
+				width: auto;
+			}
+			
+			.good-list .writer>p:last-child {
+				float: right;
+				color: #007AFF;
+			}
+			
+			.goodscar .car-detail {
+				position: relative;
+				float: left;
+				width: 70%;
+				height: 100%;
+				line-height: 50px;
+			}
+			
+			.goodscar span.icon-car {
+				display: inline-block;
+				background: url(img/gouwuche.png) no-repeat 100% 7px;
+				background-size: 37px 31px;
+				width: 80px;
+				height: 48px;
+				vertical-align: middle;
+				margin-right: 40px;
+			}
+			
+			.goodscar span.goodnum {
+				position: absolute;
+				top: 0;
+				left: 80px;
+				background: orangered;
+				border-radius: 50%;
+				width: 20px;
+				height: 22px;
+				color: #fff;
+				line-height: 22px;
+				text-align: center;
+				font-size: 12px;
+			}
+			
+			.goodscar .allprice {
+				position: relative;
+				display: inline-block;
+			}
+			
+			.goodscar .allprice:before {
+				position: absolute;
+				top: 0;
+				left: -15px;
+				content: "￥";
+			}
+			
+			.goodscar>a {
+				float: right;
+				background: orangered;
+				width: 30%;
+				height: 100%;
+				color: #fff;
+				line-height: 50px;
+				text-align: center;
+			}
+			
+			.back-top {
+				display: none;
+				position: fixed;
+				bottom: 120px;
+				right: 10px;
+				z-index: 1000;
+			}
+			
+			.back-top img {
+				width: 40px;
+				height: 40px;
+			}
+		</style>
+	</head>
+
+	<body id="">
+		<header class="mui-bar mui-bar-nav">
+			<!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+			<h1 class="mui-title">会议名称(书单名)</h1>
+		</header>
+		<!--<div id="custom">-->
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll" id="mui-scroll">
+				<div id="ll" class="title chose">
+					<span id="">筛选分类</span>
+					<select>
+						<option value="1">分类1</option>
+						<option value="2">分类2</option>
+						<option value="3">分类3</option>
+					</select>
+				</div>
+				<div id="hhhh">
+					<p class="book-class-name">分类名(3/5)</p>
+					<ul class="mui-table-view book-list">
+						<li class="mui-table-view-cell mui-media">
+							<a href="javascript:;">
+								<img class="mui-media-object mui-pull-left " src="img/1.jpg">
+								<div class="mui-media-body">
+									<div id="www" class="book-title " onclick="opendetail()">
+										幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+									</div>
+									<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+									<div>
+										<p class="oldprice">￥22</p>
+										<p class="newprice">￥<span>13.3</span></p>
+									</div>
+									<div class="addgoods">
+										<span class="jian count" data-type="-1"></span><span class="num">0</span><span class="jia count" data-type="1"></span>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<a href="javascript:;">
+								<img class="mui-media-object mui-pull-left" src="img/2.jpg">
+								<div class="mui-media-body">
+									<div id="" class="book-title">
+										幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+									</div>
+									<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+									<div>
+										<p class="oldprice">￥22</p>
+										<p class="newprice">￥<span>16</span></p>
+									</div>
+									<div class="addgoods">
+										<span class="jian count" data-type="-1"></span><span class="num">0</span><span class="jia count" data-type="1"></span>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<a href="javascript:;">
+								<img class="mui-media-object mui-pull-left" src="img/3.jpg">
+								<div class="mui-media-body">
+									<div id="" class="book-title">
+										你今年你今年你今年
+									</div>
+									<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+									<div>
+										<p class="oldprice">￥22</p>
+										<p class="newprice">￥<span>15</span></p>
+									</div>
+									<div class="addgoods">
+										<span class="jian count" data-type="-1"></span><span class="num">0</span><span class="jia count" data-type="1"></span>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<a href="javascript:;">
+								<img class="mui-media-object mui-pull-left" src="img/1.jpg">
+								<div class="mui-media-body">
+									<div id="" class="book-title">
+										幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+									</div>
+									<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+									<div>
+										<p class="oldprice">￥22</p>
+										<p class="newprice">￥<span>12</span></p>
+									</div>
+									<div class="addgoods">
+										<span class="jian count" data-type="-1"></span><span class="num">0</span><span class="jia count" data-type="1"></span>
+									</div>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!--<div class="telmsg">
+					<div class="title">
+						联系方式
+					</div>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell"><span>联系人：</span>&#12288;朱磊</li>
+						<li class="mui-table-view-cell addres"><span>联系电话：</span><span>12345678901；010-1234567</span></li>
+						<li class="mui-table-view-cell"><span>邮&#12288;&#12288;箱：</span>1234567@ww.com</li>
+						<li class="mui-table-view-cell addres"><span>地&#12288;&#12288;址：</span><span>朱磊朱磊朱磊朱磊朱磊朱磊朱磊朱磊朱磊朱磊</span></li>
+					</ul>
+				</div>-->
+
+			</div>
+			<div class="goodscar ">
+				<div id="good-list" class="good-list">
+					<div class="clear-goods mui-clear">
+						<p>
+							<span class="mui-icon mui-icon-trash"></span>清空购物车
+						</p>
+					</div>
+					<ul class="mui-table-view book-list">
+						<li class="mui-table-view-cell mui-media">
+							<div id="" class="book-title">
+								你今年你今年你今年
+							</div>
+							<div class="writer clearbt">
+								<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+								<p class="newprice">￥<span>13567</span></p>
+							</div>
+							<div class="addgoods">
+								<span class="jian count" data-type="-1"></span><span class="num">0</span><span class="jia count" data-type="1"></span>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<div id="" class="book-title">
+								你今年你今年你今年
+							</div>
+							<div class="writer clearbt">
+								<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+								<p class="newprice">￥<span>13567</span></p>
+							</div>
+							<div class="addgoods">
+								<span class="jian count" data-type="-1"></span><span class="num">0</span><span class="jia count" data-type="1"></span>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<div id="" class="book-title">
+								你今年你今年你今年
+							</div>
+							<div class="writer clearbt">
+								<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+								<p class="newprice">￥<span>13567</span></p>
+							</div>
+							<div class="addgoods">
+								<span class="jian count" data-type="-1"></span><span class="num">0</span><span class="jia count" data-type="1"></span>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<div id="" class="book-title">
+								你今年你今年你今年
+							</div>
+							<div class="writer clearbt">
+								<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+								<p class="newprice">￥<span>13567</span></p>
+							</div>
+							<div class="addgoods">
+								<span class="jian count" data-type="-1"></span><span class="num">0</span><span class="jia count" data-type="1"></span>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<div id="" class="book-title">
+								你今年你今年你今年
+							</div>
+							<div class="writer clearbt">
+								<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+								<p class="newprice">￥<span>13567</span></p>
+							</div>
+							<div class="addgoods">
+								<span class="jian count" data-type="-1"></span><span class="num">0</span><span class="jia count" data-type="1"></span>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<div id="" class="book-title">
+								你今年你今年你今年
+							</div>
+							<div class="writer clearbt">
+								<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+								<p class="newprice">￥<span>13567</span></p>
+							</div>
+							<div class="addgoods">
+								<span class="jian count" data-type="-1"></span><span class="num">0</span><span class="jia count" data-type="1"></span>
+							</div>
+						</li>
+					</ul>
+
+				</div>
+				<div class="car-detail">
+					<span id="opencar" class="icon-car"></span><span class="goodnum">0</span>
+					<span class="allprice">0</span>
+				</div>
+				<a href="xiadan.html" class="xiadan">下单</a>
+			</div>
+		</div>
+		<div id="back-top" class="back-top">
+			<img class="img" src="img/backTop.png" />
+		</div>
+		<!--</div>-->
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/zepto.js"></script>
+	<script src="js/vue.js"></script>
+	<script type="text/javascript">
+		"use strict";
+		mui.init({
+			swipeBack: false,
+			pullRefresh: {
+				container: '#pullrefresh', //待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+				up: {
+					height: 50, //可选.默认50.触发上拉加载拖动距离
+					auto: false, //可选,默认false.自动上拉加载一次
+					contentrefresh: "", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+					contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+					callback: pullupRefresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+				}
+			}
+		});
+		//返回顶部
+		//		$('.mui-scroll').scroll(function(){ 
+		//			console.log(mui(".mui-scroll"))
+		//          if($('.mui-scroll')[0].offsetTop>100){ 
+		//          	$('#back-top').show();
+		//            	return;
+		//          }  
+		//          $('#back-top').hide();
+		//      }) 
+		
+		document.getElementById('mui-scroll').addEventListener('scroll', function(e) {
+			if(e.detail.y < -100) {
+				$('#back-top').show();
+				return;
+			}
+			$('#back-top').hide();
+		});
+		mui('#back-top ').on('tap', '.img', function(e) {			
+			mui('.mui-scroll-wrapper').scroll().scrollTo(0,0,100);
+			$('#back-top').hide();
+		})
+
+		function opendetail() {
+			mui.openWindow({
+				url: "product_detail.html",
+				id: "product_detail",
+				waiting: {
+					autoShow: false
+				}
+			});
+		}
+		mui(".mui-table-view-cell").on('tap', '#www', function() {
+			//获取id
+			var id = this.getAttribute("id");
+			alert(id)
+		})
+		var status = 1;
+		$("#opencar").on("click", function() {
+			if(status == 1) {
+				status = 0;
+				$("#good-list").show();
+			} else {
+				status = 1;
+				$("#good-list").hide();
+			}
+
+		});
+		/*
+		 * allcounts总数量,allPrice总价，productPrice价格，type加减标志，count单个数量
+		 */
+		var allcounts = +$(".goodnum").text();
+		var allPrice = +$(".allprice").text();
+
+		function refreshEvent() {
+			mui(".mui-table-view-cell").on('tap', '.count', function() {
+				//$(".count").bind('click', function(e) {
+				var ele = this;
+				var productPrice = +$(ele).parent().siblings().find(".newprice>span").text();
+				var type = ele.getAttribute("data-type");
+				var count = $($(ele).siblings(".num")[0]).text();
+				if(+type > 0) {
+					allcounts += 1;
+					allPrice = allPrice + productPrice;
+					document.querySelector('.goodscar').style.bottom = '0px';
+					//$(".goodscar").css('bottom', '0px');
+					$(".goodnum").text(allcounts);
+					$(".allprice").text(allPrice.toFixed(2));
+					$($(ele).siblings(".num")[0]).text(+count + 1);
+				} else {
+					if(+count > 0) {
+						allcounts -= 1;
+						allPrice -= productPrice;
+						$(".goodnum").text(allcounts);
+						$(".allprice").text(allPrice.toFixed(2));
+						$($(ele).siblings(".num")[0]).text(+count - 1);
+					}
+				}
+				if(+allcounts <= 0) {
+					$(".goodscar").css('bottom', '-50px');
+				}
+			});
+		};
+		refreshEvent();
+		var count = 0;
+		/**
+		 * 上拉加载具体业务实现
+		 */
+		function pullupRefresh() {
+
+			setTimeout(function() {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh(false); //参数为true代表没有更多数据了。
+				var table = document.body.querySelector('.mui-table-view');
+				var cells = document.body.querySelectorAll('.mui-table-view-cell');
+
+				for(var i = cells.length, len = i + 5; i < len; i++) {
+					var li = document.createElement('li');
+					li.className = 'mui-table-view-cell mui-media';
+					li.innerHTML =
+						'<a href="javascript:;">' +
+						'<img class="mui-media-object mui-pull-left" src="img/1.jpg">' +
+						'<div class="mui-media-body">' +
+						'<div id="" class="book-title">' +
+						'幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸' +
+						'</div>' +
+						'<p class="mui-ellipsis">作者：你今年&#12288;著</p>' +
+						'<div>' +
+						'<p class="oldprice">￥22</p>' +
+						'<p class="newprice">￥<span>12</span></p>' +
+						'</div>' +
+						'<div class="addgoods">' +
+						'<span class="jian count" data-type="-1"></span><span class="num">0</span><span class="jia count" data-type="1"></span>' +
+						'</div>' +
+						'</div>' +
+						'</a>';
+					table.appendChild(li);
+				}
+				refreshEvent();
+			}, 1500);
+		}
+	</script>
+
+</html>

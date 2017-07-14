@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <style type="text/css">
+    	body{
+    		font-family: "微软雅黑","microsoft yahei","microsoft sans serif";
+    	}
+    	h5{
+		        padding-top: 8px;
+		        padding-bottom: 8px;
+		        text-indent: 12px;
+		}
+		.mui-content {
+			background-color: #fff;
+			padding-bottom: 55px;
+		}    
+		.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{
+				font-size: 15px;
+				margin-top:8px;
+				color: #333;
+		}
+		.pdetail.mui-table-view.mui-grid-view .mui-table-view-cell{
+			position: relative;
+		}
+		.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-object{
+			width: 200px;
+		}
+		.pdetail.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+			font-size: 18px;
+		    line-height: 18px;
+		    height: 18px;
+		    margin-bottom: 8px;
+		}
+		.bordertop:before{
+			position: absolute;
+			top: 7px;
+			left: 0;
+			content: '';
+			height: 1px;
+			width: 100%;
+			background: #c8c7cc;
+		}
+		.pdetail.mui-table-view.mui-grid-view .productprice{
+			text-align: left;
+		}
+		.pdetail .productprice .oldprice span{
+			text-decoration:line-through ;
+		}
+		.pdetail .productprice .newprice{
+			position: relative;
+			color: #333;
+		}
+		/*.productprice .newprice .addcar{
+			position: absolute;
+			top: 0;
+			right: 10px;
+			background: url(img/jia1.png) no-repeat;
+    		background-size: 20px 20px;
+			width: 25px;
+    		height: 25px;
+		}*/
+		.price{
+			position: relative;
+		}
+		.addgoods {
+    		position: absolute;
+    		right: 10px;
+    		bottom: 10px;
+    	}
+    	.price .addgoods{
+    		bottom: 0px;
+    	}
+    	.addgoods span{
+    		display: inline-block;
+    		width: 25px;
+    		height: 25px;
+    		line-height: 25px;
+    		text-align: center;
+    		vertical-align: middle;
+    	}
+    	.addgoods .jia{
+    		background: url(img/jia1.png) no-repeat;
+    		background-size: 25px 25px;
+    	}
+    	.addgoods .jian{
+    		background: url(img/jian1.png) no-repeat;
+    		background-size: 25px 25px;
+    	}
+		.jianjie{
+			text-indent: 2em;
+		}
+		.mulu{
+			color: #8f8f94;
+		}
+		.pdetail:before ,.pdetail:after ,.mulu .mui-table-view:before,.mulu .mui-table-view:after{
+			background: #fff;
+		}
+		.mulu > ul li{
+			padding: 3px 0px;
+		}
+		.mulu .zhangjie{
+			display: inline-block;
+			text-indent: 2em;
+		}
+		.goodscar{
+    		
+    		position: fixed;
+    		left: 0;
+    		bottom: -50px;
+    		width: 100%;
+    		height: 50px;
+    		background: #fff;
+    		-webkit-transition: bottom 0.6s;
+		    -moz-transition: bottom 0.6s;
+		    -o-transition: bottom 0.6s;
+		    transition: bottom 0.6s;
+    	}
+    	.goodscar > div{
+    		position: relative;
+    		float: left;
+    		width: 70%;
+    		height: 100%;
+    		line-height: 50px;
+    	}
+    	.goodscar span.icon-car{ 
+    		display: inline-block;		
+    		background: url(img/gouwuche.png) no-repeat 100% 7px;
+    		background-size: 37px 31px;
+    		width: 80px;
+    		height: 100%;
+    		vertical-align: middle;
+    		margin-right: 20px;
+    	}
+    	.goodscar span.goodnum{
+    		position: absolute;
+		    top: 0;
+		    left: 80px;
+		    background: orangered;
+		    border-radius: 50%;
+		    width: 20px;
+		    height: 22px;
+		    color: #fff;
+		    line-height: 22px;
+		    text-align: center;
+		    font-size: 12px;
+    	}
+    	
+    	.goodscar a{
+    		float: right;
+    		background: orangered;
+    		width: 30%;
+    		height: 100%;
+    		color: #fff;
+    		line-height: 50px; 
+    		text-align: center; 		
+    	}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 class="mui-title">会议名称(书单名)</h1>
+	</header>
+	<div class="mui-content" >
+		    <ul class="mui-table-view mui-grid-view pdetail">
+		        <li class="mui-table-view-cell mui-media mui-col-xs-12">
+		            <a href="#">
+		                <img class="mui-media-object" src="img/1.jpg">
+		                <div class="mui-media-body">俄国党政史:权力金字塔的形成与坍塌</div>
+		                <p>作者：李勇&#12288;著</p><p>出版时间：2016-12</p>	                
+		            </a>
+		        </li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-12 productprice price">
+		        	<p class="oldprice">订价：<span>￥180</span></p>
+		        	<p class="newprice">折扣价：￥<span class="addcar">180</span></p>
+		        	<div class="addgoods">
+						<span class="jian count" data-type="-1"></span><span class="num" >0</span><span class="jia count" data-type="1"></span>
+					</div>
+		        </li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-12 ">
+		        	<div class="mui-media-body bordertop">内容简介</div>
+		        	<p class="jianjie productprice">
+		        		权力金字塔的形成与坍塌权力金字塔的形成与坍塌权力金字塔的形成与坍塌权力金字塔的形成与坍塌权力金字塔的形成与坍塌权力金字塔的形成与坍塌权力金字塔的形成与坍塌
+		        	</p>
+		        </li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-12 ">
+		        	<div class="mui-media-body bordertop">作者简介</div>
+		        	<p class="jianjie productprice">
+		        		权力金字塔的形成与坍塌权力金字塔的形成与坍塌权力金字塔的形成与坍塌权力金字塔的形成与坍塌权力金字塔的形成与坍塌权力金字塔的形成与坍塌权力金字塔的形成与坍塌
+		        	</p>
+		        </li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-12 mulu">
+		        	<div class="mui-media-body bordertop">目录</div>
+		        	<ul class="mui-table-view productprice ">
+		        		<li><span>前言</span>&#12288;</li>
+		        		<li><span>上卷</span>&#12288;</li>
+		        		<li><span>序言</span>&#12288;</li>
+		        		<li>
+		        			<span>第一章</span>&#12288;权力金字塔的形成
+		        			<ul class="mui-table-view productprice ">
+		        				<li><span class="zhangjie">一</span>&#12288;权力金字塔的形成权力金字塔的形成权力金字塔的形成权力金字塔的形成</li>
+		        				<li><span class="zhangjie">一</span>&#12288;权力金字塔的形成</li>
+		        				<li><span class="zhangjie">一</span>&#12288;权力金字塔的形成</li>
+		        				<li><span class="zhangjie">一</span>&#12288;权力金字塔的形成</li>
+		        				<li><span class="zhangjie">一</span>&#12288;权力金字塔的形成</li>
+		        			</ul>
+		        		</li>
+		        		<li><span>第一章</span>&#12288;权力金字塔的形成</li>
+		        	</ul>
+		        </li>
+		    </ul> 
+		<div class="goodscar ">
+			<div>					
+				<span class="icon-car"></span><span class="goodnum">0</span>					
+				￥<span class="allprice">0</span>
+			</div>				
+			<a href="javascript:;" class="xiadan">下单</a>
+		</div>    
+	</div>
+</body>
+<script src="js/mui.min.js"></script>
+<script src="js/zepto.js"></script>
+<script type="text/javascript" charset="utf-8">
+    mui.init();
+    document.addEventListener('touchmove', function (event) {
+	event.preventDefault();
+	}, false);
+    var productPrice = +$(".newprice>span").text();
+    var allPrice = +$(".allprice").text();
+    var allcounts = +$(".goodnum").text();
+   	$(".count").bind('click',function(e){
+   		var type = e.target.getAttribute("data-type");
+   		var count = $($(e.target).siblings(".num")[0]).text();
+   		if( +type > 0 ){
+   			allcounts += 1;
+   			allPrice+=productPrice;
+   			$(".goodscar").css('bottom','0px');
+   			$(".goodnum").text(allcounts);
+   			$(".allprice").text(allPrice);
+   			$($(e.target).siblings(".num")[0]).text(+count+1);
+   		}else{
+   			if(+count > 0){
+   				allcounts -= 1;
+   				allPrice -=productPrice;
+   				$(".goodnum").text(allcounts);
+   				$(".allprice").text(allPrice);
+   				$($(e.target).siblings(".num")[0]).text(+count-1);
+   			}
+   		}
+   		if(+allcounts <= 0){
+   			$(".goodscar").css('bottom','-50px');
+   		}
+   	});
+</script>
+</html>

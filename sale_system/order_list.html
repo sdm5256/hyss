@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+		<style>
+			.title {
+				margin: 12px 15px 10px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+			
+			.oa-contact-cell.mui-table .mui-table-cell {
+				padding: 11px 0;
+				vertical-align: middle;
+			}
+			
+			.oa-contact-cell {
+				position: relative;
+				margin: -11px 0;
+			}
+			
+			.oa-contact-avatar {
+				width: 75px;
+			}
+			
+			.oa-contact-avatar img {
+				border-radius: 50%;
+			}
+			
+			.oa-contact-content {
+				width: 100%;
+			}
+			
+			.oa-contact-name {
+				margin-right: 20px;
+			}
+			
+			.oa-contact-name,
+			oa-contact-position {
+				float: left;
+			}
+			
+			#sliderSegmentedControl {
+				border-bottom: 1px solid #c8c7cc;
+			}
+			
+			#sliderSegmentedControl>.mui-active {
+				border-bottom: 3px solid #007aff;
+			}
+			
+			.self-search {
+				position: relative;
+				text-align: center;
+			}
+			.self-search .mui-input-row{
+				display: inline-block;
+				width: 60%;
+				margin-top: 8px;
+			}
+			.self-search .mui-input-row span{
+				position: absolute;
+				top: 4px;
+				left: 2px;
+			}
+			.self-search .mui-input-row input{
+				margin-bottom: 0;
+				height: 33px;
+				padding-left: 25px;
+				background: #fff;
+			}
+			
+			.self-search button {
+				background: #007aff;
+				color: #fff;
+				margin-top: 8px;
+				height: 33px;
+			}
+			
+			.self-search a {
+				position: absolute;
+				top: 10px;
+				right: 20px;
+			}
+			
+			.self-search a span {
+				font-size: 28px;
+			}
+			
+			.book-list li {
+				position: relative;
+			}
+			
+			.book-list .mui-media>a {
+				margin-top: 5px;
+			}
+			
+			.book-list .mui-media>a img {
+				width: 100px;
+				height: 120px;
+				max-width: 100px;
+			}
+			
+			.order-msg>p {
+				line-height: 26px;
+			}
+			
+			.order-msg>div {
+				line-height: 25px;
+				border-bottom: 1px solid #c8c7cc;
+			}
+			
+			.order-msg .phone {
+				float: right;
+			}
+			
+			.revers-price>div {
+				text-align: right;
+			}
+			
+			.revers-price>div:first-child {
+				line-height: 32px;
+				border-bottom: 1px solid #c8c7cc;
+			}
+			
+			.revers-price>div>a {
+				margin-left: 20px;
+				font-size: 16px;
+			}
+			
+			.revers-price>div:last-child {
+				padding-top: 15px;
+			}
+			
+			.book-title {
+				word-wrap: break-word;
+				word-break: break-all;
+				white-space: normal;
+			}
+			
+			.addgoods {
+				position: absolute;
+				right: 20px;
+				bottom: 10px;
+			}
+			
+			.addgoods .good-number {
+				position: relative;
+				font-size: 15px;
+			}
+			
+			.addgoods .good-number:before {
+				position: absolute;
+				top: -2px;
+				left: -11px;
+				content: 'X';
+			}
+			
+			.addgoods .delate {
+				border-radius: 3px;
+				border: 1px solid #8f8f94;
+				padding: 3px 8px 1px 2px;
+			}
+			
+			.oldprice {
+				text-decoration: line-through;
+			}
+			
+			.newprice {
+				color: #007aff;
+				font-size: 17px;
+			}
+			
+			.mask {
+				display: none;
+				position: fixed;
+				z-index: 998;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;
+				opacity: 0;
+				background: rgba(0, 0, 0, .4)
+			}
+			
+			.mask .mui-popup-text {
+				background: #fff;
+			}
+			
+			.mask .mui-popup-in {
+				display: block;
+			}
+			
+			.mui-input-group:before,
+			.mui-input-group:after,
+			.mui-input-group .mui-input-row:after {
+				background: #fff;
+			}
+			
+			.mui-input-group .mui-input-row {
+				display: inline-block;
+				font-size: 14px;
+				height: 36px;
+				margin-right: 12px;
+			}
+			
+			.mui-input-group .mui-input-row label {
+				padding-left: 20px;
+				padding-right: 2px;
+			}
+			
+			.mui-input-group .mui-input-row input[type=radio] {
+				top: 8px;
+				left: 0px;
+			}
+			
+			.mui-input-group .mui-input-row input[type=radio]:checked:before {
+				content: '\e442';
+			}
+			
+			.mui-input-group .mui-input-row input:before {
+				font-size: 20px;
+			}
+			
+			.mask .timetip {
+				text-align: left;
+				margin-left: 10px;
+				color: #000;
+			}
+			
+			.selectedate input {
+				width: 43%;
+				font-size: 14px;
+				height: 30px;
+				padding: 10px 10px;
+			}
+			
+			.mask select {
+				border: 1px solid rgba(0, 0, 0, .2)!important;
+				width: 90%;
+				padding: 3px 15px;
+			}
+			#mask2 .text2 > p{
+				padding-top: 10px;
+			}
+			#mask2 .text2 > input{
+				height: 30px;
+				width: 93%;
+			    font-size: 14px;
+			    margin-bottom: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+			<h1 class="mui-title">会议售书系统</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item " href="index.html" onclick="openindex()">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-outline"></span>
+				<span class="mui-tab-label">会议</span>
+			</a>
+			<a class="mui-tab-item mui-active" href="order_list.html">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-topic"></span>
+				<span class="mui-tab-label">订单</span>
+			</a>
+		</nav>
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll" id="mui-scroll">
+			<div id="tabbar-with-chat" class="mui-control-content mui-active">
+				<div id="slider" class="self-slid">
+					<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+						<a id="1" class="mui-control-item mui-active" href="#item1mobile">
+							全部
+						</a>
+						<a id="2" class="mui-control-item" href="#item2mobile">
+							待处理(2)
+						</a>
+						<a id="3" class="mui-control-item" href="#item3mobile">
+							代发货(45)
+						</a>
+					</div>
+					<div class="mui-slider-group ">
+						<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+							<div class="title self-search">
+								<div class="mui-input-row ">
+									<input type="text"  placeholder="">
+									<span class="mui-icon mui-icon-search"></span>
+								</div>
+								<button type="button">搜索</button>
+							</div>
+							<ul class="mui-table-view book-list">
+								<li class="mui-table-view-cell mui-media">
+									<div class="order-msg">
+										<p>订单编号：<span onclick="openOrder()">00201705210021</span></p>
+										<p>创建时间：<span>2010-05-21</span></p>
+										<div>
+											<a>收货人：姓名</a>
+											<a class="phone">18210896543</a>
+										</div>
+									</div>
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="imgs/1.jpg">
+										<div class="mui-media-body">
+											<div id="" class="book-title" onclick="opendetail()">
+												幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+											</div>
+											<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+											<div>
+												<p class="oldprice">￥22</p>
+												<p class="newprice">￥<span>13</span></p>
+											</div>
+											<div class="addgoods">
+												<p><span class="good-number">5</span></p>
+											</div>
+										</div>
+									</a>
+									<div class="revers-price">
+										<div class="order-all">
+											<a>共2件商品</a>
+											<a id="sum-price">总额：278</a>
+										</div>
+										<div class="order">
+											<!--<a>修改价格</a><a>确认收款</a>-->
+											<button id='promptBtn' type="button" data-id="123233" class="mui-btn mui-btn-blue mui-btn-outlined promptBtn">修改价格</button>
+											<button id='confirmBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">确认收款</button>
+										</div>
+									</div>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<div class="order-msg">
+										<p>订单编号：<span onclick="openOrder()">00201705210021</span></p>
+										<p>创建时间：<span>2010-05-21</span></p>
+										<div>
+											<a>收货人：姓名</a>
+											<a class="phone">18210896543</a>
+										</div>
+									</div>
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="imgs/1.jpg">
+										<div class="mui-media-body">
+											<div id="" class="book-title" onclick="opendetail()">
+												幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+											</div>
+											<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+											<div>
+												<p class="oldprice">￥22</p>
+												<p class="newprice">￥<span>13</span></p>
+											</div>
+											<div class="addgoods">
+												<p><span class="good-number">5</span></p>
+											</div>
+										</div>
+									</a>
+									<div class="revers-price">
+										<div class="order-all">
+											<a>共2件商品</a>
+											<a id="sum-price">总额：278</a>
+										</div>
+										<div class="order">
+											<!--<a>修改价格</a><a>确认收款</a>-->
+											<button id='promptBtn' type="button" data-id="123233" class="mui-btn mui-btn-blue mui-btn-outlined promptBtn">修改价格</button>
+											<button id='confirmBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">确认收款</button>
+										</div>
+									</div>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<div class="order-msg">
+										<p>订单编号：<span>00201705210021</span></p>
+										<p>创建时间：<span>2010-05-21</span></p>
+										<div>
+											<a>收货人：姓名</a>
+											<a class="phone">18210896543</a>
+										</div>
+									</div>
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="imgs/1.jpg">
+										<div class="mui-media-body">
+											<div id="" class="book-title" onclick="opendetail()">
+												幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+											</div>
+											<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+											<div>
+												<p class="oldprice">￥22</p>
+												<p class="newprice">￥<span>13</span></p>
+											</div>
+											<div class="addgoods">
+												<p><span class="good-number">5</span></p>
+											</div>
+										</div>
+									</a>
+									<div class="revers-price">
+										<div class="order-all">
+											<a>共2件商品</a>
+											<a id="sum-price">总额：278</a>
+										</div>
+										<div class="order">
+											<!--<a>修改价格</a><a>确认收款</a>-->
+											<button id='promptBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined promptBtn">修改价格</button>
+											<button id='confirmBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">确认收款</button>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div id="item2mobile" class="mui-slider-item mui-control-content">
+							<div class="title self-search">
+								<div class="mui-input-row ">
+									<input type="text"  placeholder="">
+									<span class="mui-icon mui-icon-search"></span>
+								</div>
+								<button type="button">搜索</button>
+							</div>
+							<ul class="mui-table-view book-list">
+								<li class="mui-table-view-cell mui-media">
+									<div class="order-msg">
+										<p>订单编号：<span>00201705210021</span></p>
+										<p>创建时间：<span>2010-05-21</span></p>
+										<div>
+											<a>收货人：姓名</a>
+											<a class="phone">18210896543</a>
+										</div>
+									</div>
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="imgs/1.jpg">
+										<div class="mui-media-body">
+											<div id="" class="book-title" onclick="opendetail()">
+												幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+											</div>
+											<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+											<div>
+												<p class="oldprice">￥22</p>
+												<p class="newprice">￥<span>13</span></p>
+											</div>
+											<div class="addgoods">
+												<p><span class="good-number">5</span></p>
+											</div>
+										</div>
+									</a>
+									<div class="revers-price">
+										<div class="order-all">
+											<a>共2件商品</a>
+											<a id="sum-price">总额：278</a>
+										</div>
+										<div class="order">
+											<!--<a>修改价格</a><a>确认收款</a>-->
+											<button id='promptBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">修改价格</button>
+											<button id='confirmBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">确认收款</button>
+										</div>
+									</div>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<div class="order-msg">
+										<p>订单编号：<span>00201705210021</span></p>
+										<p>创建时间：<span>2010-05-21</span></p>
+										<div>
+											<a>收货人：姓名</a>
+											<a class="phone">18210896543</a>
+										</div>
+									</div>
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="imgs/1.jpg">
+										<div class="mui-media-body">
+											<div id="" class="book-title" onclick="opendetail()">
+												幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+											</div>
+											<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+											<div>
+												<p class="oldprice">￥22</p>
+												<p class="newprice">￥<span>13</span></p>
+											</div>
+											<div class="addgoods">
+												<p><span class="good-number">5</span></p>
+											</div>
+										</div>
+									</a>
+									<div class="revers-price">
+										<div class="order-all">
+											<a>共2件商品</a>
+											<a id="sum-price">总额：278</a>
+										</div>
+										<div class="order">
+											<!--<a>修改价格</a><a>确认收款</a>-->
+											<button id='promptBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">修改价格</button>
+											<button id='confirmBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">确认收款</button>
+										</div>
+									</div>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<div class="order-msg">
+										<p>订单编号：<span>00201705210021</span></p>
+										<p>创建时间：<span>2010-05-21</span></p>
+										<div>
+											<a>收货人：姓名</a>
+											<a class="phone">18210896543</a>
+										</div>
+									</div>
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="imgs/1.jpg">
+										<div class="mui-media-body">
+											<div id="" class="book-title" onclick="opendetail()">
+												幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+											</div>
+											<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+											<div>
+												<p class="oldprice">￥22</p>
+												<p class="newprice">￥<span>13</span></p>
+											</div>
+											<div class="addgoods">
+												<p><span class="good-number">5</span></p>
+											</div>
+										</div>
+									</a>
+									<div class="revers-price">
+										<div class="order-all">
+											<a>共2件商品</a>
+											<a id="sum-price">总额：278</a>
+										</div>
+										<div class="order">
+											<button id='promptBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">修改价格</button>
+											<button id='confirmBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">确认收款</button>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div id="item3mobile" class="mui-slider-item mui-control-content">
+							<div class="title self-search">
+								<div class="mui-input-row ">
+									<input type="text"  placeholder="">
+										<span class="mui-icon mui-icon-search"></span>
+								</div>
+								<button type="button">搜索</button>
+							</div>
+							<ul class="mui-table-view book-list">
+								<li class="mui-table-view-cell mui-media">
+									<div class="order-msg">
+										<p>订单编号：<span>00201705210021</span></p>
+										<p>创建时间：<span>2010-05-21</span></p>
+										<div>
+											<a>收货人：姓名</a>
+											<a class="phone">18210896543</a>
+										</div>
+									</div>
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="imgs/1.jpg">
+										<div class="mui-media-body">
+											<div id="" class="book-title" onclick="opendetail()">
+												幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+											</div>
+											<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+											<div>
+												<p class="oldprice">￥22</p>
+												<p class="newprice">￥<span>13</span></p>
+											</div>
+											<div class="addgoods">
+												<p><span class="good-number">5</span></p>
+											</div>
+										</div>
+									</a>
+									<div class="revers-price">
+										<div class="order-all">
+											<a>共2件商品</a>
+											<a id="sum-price">总额：278</a>
+										</div>
+										<div class="order">
+											<!--<button id='promptBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">修改价格</button>-->
+											<button id='confirmBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">确认发货</button>
+										</div>
+									</div>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<div class="order-msg">
+										<p>订单编号：<span>00201705210021</span></p>
+										<p>创建时间：<span>2010-05-21</span></p>
+										<div>
+											<a>收货人：姓名</a>
+											<a class="phone">18210896543</a>
+										</div>
+									</div>
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="imgs/1.jpg">
+										<div class="mui-media-body">
+											<div id="" class="book-title" onclick="opendetail()">
+												幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+											</div>
+											<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+											<div>
+												<p class="oldprice">￥22</p>
+												<p class="newprice">￥<span>13</span></p>
+											</div>
+											<div class="addgoods">
+												<p><span class="good-number">5</span></p>
+											</div>
+										</div>
+									</a>
+									<div class="revers-price">
+										<div class="order-all">
+											<a>共2件商品</a>
+											<a id="sum-price">总额：278</a>
+										</div>
+										<div class="order">
+											<!--<button id='promptBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">修改价格</button>-->
+											<button id='confirmBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">确认发货</button>
+										</div>
+									</div>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<div class="order-msg">
+										<p>订单编号：<span>00201705210021</span></p>
+										<p>创建时间：<span>2010-05-21</span></p>
+										<div>
+											<a>收货人：姓名</a>
+											<a class="phone">18210896543</a>
+										</div>
+									</div>
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="imgs/1.jpg">
+										<div class="mui-media-body">
+											<div id="" class="book-title" onclick="opendetail()">
+												幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+											</div>
+											<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+											<div>
+												<p class="oldprice">￥22</p>
+												<p class="newprice">￥<span>13</span></p>
+											</div>
+											<div class="addgoods">
+												<p><span class="good-number">5</span></p>
+											</div>
+										</div>
+									</a>
+									<div class="revers-price">
+										<div class="order-all">
+											<a>共2件商品</a>
+											<a id="sum-price">总额：278</a>
+										</div>
+										<div class="order">
+											<!--<button id='promptBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">修改价格</button>-->
+											<button id='confirmBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined ">确认发货</button>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div id="mask2" class="mask ">
+					<div class="mui-popup mui-popup-in">
+						<div class="mui-popup-inner">
+							<div class="mui-popup-title">请填写快递信息</div>
+							<div class="mui-popup-text text2">
+								<p class="timetip">快递名称</p>
+								<input type="text" autofocus="" placeholder="快递名称">
+								<p class="timetip">快递单号</p>
+								<input type="text" placeholder="快递单号">
+							</div>
+						</div>
+						<div class="mui-popup-buttons filter">
+							<span class="mui-popup-button" type="0">取消</span><span class="mui-popup-button " type="1">确定</span>
+						</div>
+					</div>
+				</div>
+		</div>
+	</body>
+	<script src="js/zepto.js"></script>
+	<script src="js/mui.min.js"></script>
+	<script src="js/mui.picker.min.js"></script>
+	<script>
+		
+			mui.init({
+			  pullRefresh : {
+			    container:"#refreshContainer",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+			    down : {
+			       contentdown : "",
+			      height:50,//可选,默认50.触发下拉刷新拖动距离,
+			      auto: false,//可选,默认false.首次加载自动上拉刷新一次
+			      contentover : '',
+			      callback :pullfresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+			    }
+			  }
+			});
+
+		function pullfresh(){
+			
+			setTimeout(function() {
+				mui('#refreshContainer').pullRefresh().endPulldownToRefresh(true);
+				console.log(1)
+			}, 1500);
+		}
+		mui('#sliderSegmentedControl ').on("tap",'.mui-control-item ', function(e) {
+			console.log(this)
+		});
+		
+		function opendetail() {
+			mui.openWindow({
+				url: "order_detail.html",
+				id: "order_detail",
+				waiting: {
+					autoShow: false
+				}
+			});
+		}
+		function openindex(){
+			mui.openWindow({
+				url: "index.html",
+				id: "index",
+				waiting: {
+					autoShow: false
+				}
+			});
+		}
+		document.getElementById("confirmBtn").addEventListener('tap', function() {
+			var btnArray = ['否', '是'];
+			mui.confirm('你确认收款？', '', btnArray, function(e) {
+				if(e.index == 1) {
+
+				} else {
+
+				}
+			})
+		});
+		
+//		mui(".promptBtn")[1].addEventListener('tap', function(e) {
+//			e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
+//			var btnArray = ['取消', '确定'];
+//			mui.prompt('请输入修改后的价格', '价格', '订单原价￥239', btnArray, function(e) {
+//				if(e.index == 1) {
+//					$('#sum-price').text('总额：' + e.value);
+//				} else {
+//					//info.innerText = '你点了取消按钮';
+//				}
+//			})
+//		});
+		$('.promptBtn').bind("tap", function(e) {
+			e.detail.gesture.preventDefault();
+			var btnArray = ['取消', '确定'];
+			var self = e;
+			var goodId=$(self.target).attr('data-id');
+			var allPrice=$(self.target).parent().siblings().children(':last-child');
+			mui.prompt('请输入修改后的价格', '价格', '订单原价￥239', btnArray, function(e) {
+				if(e.index == 1) {
+					allPrice.text('总额：' + e.value);
+				} else {
+					//info.innerText = '你点了取消按钮';
+				}
+			})
+		});
+		$('#item3mobile .order').bind("click", function(e) {
+			//var type = e.target.getAttribute("type");
+			$("#mask2").show().css('opacity', '1');;
+		});
+		$('#mask2 .filter').bind("click", function(e) {
+			var type = e.target.getAttribute("type");
+			if(+type == 0) {
+				$("#mask2").hide();
+			} else {
+				$("#mask2").hide();
+
+			}
+		});
+	</script>
+
+</html>

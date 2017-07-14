@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			body{
+				font-family: "微软雅黑";
+			}
+			.title{
+				height: 40px;
+				line-height: 40px;
+				color: #333;
+				font-size: 12px;
+				padding-left: 16px;
+				border-bottom: 1px solid #e5e5e5;
+			}
+			.title .mui-icon{
+				padding: 8px 16px 0px 8px;
+			}
+			
+			.mui-table-view{
+				background: #fff;
+			}
+			.mui-table-view:before,.mui-table-view:after{
+				background: #e5e5e5;
+			}
+			.msglist li{
+				padding: 10px 16px;
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: row ;
+				align-items: center;
+			}
+			.mui-table-view-cell:after{
+				left: 0;
+				background: #e5e5e5;
+			}
+			.msglist li .item-left{
+				display: inline-block;
+				color: #666;
+				font-size: 14px;
+				flex: 1;
+				flex: 0 0 30%;
+			}
+			.msglist li .item-right{
+				display: inline-block;
+				color: #333;
+				font-size: 14px;
+				flex: 1;
+				text-align: right;
+				flex-wrap:  wrap;
+			}
+			.msglist li .ft-color{
+				color: #E43330;
+			}
+			.booklist li{
+				padding: 10px 16px;
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: row ;
+				position: relative;
+			}
+			.booklist li .list-left{
+				flex: 0 0 100px;
+			}
+			.booklist li .list-left img{
+				width: 100px;
+				height: 125px;
+			}
+			.booklist li .list-right{
+				flex: 1;
+				color: #333;
+				font-size: 14px;
+			}
+			.booklist li .author{
+				color: #999;
+				font-size: 12px;
+				margin-top: 5px;
+			}
+			.booklist li .oldprice{
+				color: #999;
+				font-size: 12px;
+				text-decoration: line-through;
+				margin-top: 5px;
+			}
+			.booklist li .newprice{
+				color: #333;
+				font-size: 12px;
+				margin-top: 5px;
+			}
+			.booklist .hide{
+				display: none;
+			}
+			.mask-phone{
+				display: none;
+				position: fixed;
+			    z-index: 998;
+			    top: 0;
+			    right: 0;
+			    bottom: 0;
+			    left: 0;
+			    -webkit-transition-duration: 400ms;
+			    transition-duration: 400ms;
+			    opacity: 1;
+			    background: rgba(0, 0, 0, .4);
+			}
+			.mask-phone .phone-msg{
+				width: 80%;
+			    margin: 0 auto;
+			    margin-top: 150px;
+			    border-radius: 4px;
+			    font-size: 14px;
+			}
+			.mask-phone .phone-msg span{
+				display: inline-block;
+				width: 55px;
+				font-weight: 600;
+			}
+			.mask-phone .phone-msg .title{
+				text-align: center;
+			}
+			.mask-phone .phone-msg .ftcolor{
+				color: blue;
+			}
+			.mask-phone .phone-msg .phone{
+				margin: 5px 0px 0px 55px;
+			}
+			.mask-phone .phone-msg .adress{
+				float: left;
+				width: 75%;
+			}
+			.back-top{
+				display: none;
+				position: fixed;
+				bottom: 120px;
+				right: 10px;
+			}
+			.back-top img{
+				width: 40px;
+				height: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">订单详情
+			
+			</h1>
+			<span class=" mui-icon mui-icon-phone  mui-pull-right"></span>
+		</header>
+		<div class="mui-content">
+			<div class="title">订单信息 <span class=" mui-icon mui-icon-arrowup mui-pull-right" data-id="1" data-type="1"></span></div>
+			<ul id="msg1" class="mui-table-view msglist">
+				<li class="mui-table-view-cell "><span class="item-left">订单编号</span><span class="item-right">201706150002</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">创建时间</span><span class="item-right">20170615</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">付款时间</span><span class="item-right">20170615</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">订单状态</span><span class="item-right">已发货</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">支付方式</span><span class="item-right">微信支付</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">订单金额</span><span class="item-right">1230.00</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">修改后金额</span><span class="item-right">1230.00</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">实付金额</span><span class="item-right ft-color">1230.00</span></li>
+			</ul>
+			<div class="title">收货人信息 <span class=" mui-icon mui-icon-arrowup mui-pull-right" data-id="2" data-type="1"></span></div>
+			<ul id="msg2" class="mui-table-view msglist">
+				<li class="mui-table-view-cell"><span class="item-left">收货人</span><span class="item-right">历程</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">手机号</span><span class="item-right">12345678901</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">邮箱</span><span class="item-right">20170615@163.com</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">地址</span><span class="item-right">北京西城区23号已发货大厦1607</span></li>
+			</ul>
+			<div class="title">发票信息<span class=" mui-icon mui-icon-arrowup mui-pull-right" data-id="3" data-type="1"></span></div>
+			<ul id="msg3" class="mui-table-view msglist">
+				<li class="mui-table-view-cell"><span class="item-left">发票类型</span><span class="item-right">增值税发票</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">发票抬头</span><span class="item-right">单位</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">纳税人名称</span><span class="item-right">北京西城区23号已发货大厦1607</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">纳税人识别号</span><span class="item-right">1122335522</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">公司地址</span><span class="item-right">北京西城区23号已发货大厦1607</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">公司电话</span><span class="item-right">12345678901</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">开户行支行</span><span class="item-right">北京西城区23号已发货大厦</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">开户账号</span><span class="item-right">600230021002856</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">发票内容</span><span class="item-right">图书</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">需要明细</span><span class="item-right">是</span></li>
+			</ul>
+			<div class="title">物流信息 <span class=" mui-icon mui-icon-arrowup mui-pull-right" data-id="4" data-type="1"></span></div>
+			<ul id="msg4" class="mui-table-view msglist">
+				<li class="mui-table-view-cell"><span class="item-left">快递名称</span><span class="item-right">圆通</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">快递单号</span><span class="item-right">11112345678901</span></li>
+			</ul>
+			<div class="title">会议信息 <span class=" mui-icon mui-icon-arrowup mui-pull-right" data-id="5" data-type="1"></span></div>
+			<ul id="msg5" class="mui-table-view msglist">
+				<li class="mui-table-view-cell"><span class="item-left">会议名称</span><span class="item-right">一带一路</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">书单名称</span><span class="item-right">一带一路上的经济</span></li>
+			</ul>
+			<div class="title">图书明细  <span class=" mui-icon mui-icon-arrowup mui-pull-right" data-id="6" data-type="1"></span></div>
+			<ul id="msg6" class="mui-table-view booklist">
+				<li class="mui-table-view-cell">
+					<div class="list-left"><img src="img/3.jpg"></div>
+					<div class="list-right">
+						<div class="book-title">
+							剑拔弩张的盟友：太平洋战争期间的中美合作关系
+						</div>
+						<p class="author">作者：离开了</p>
+						
+						<div class="oldprice">￥123</div>
+						<div class="newprice"> ￥96 <span class="mui-pull-right">X4</span></div>
+						
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="list-left"><img src="img/3.jpg"></div>
+					<div class="list-right">
+						<div class="book-title">
+							剑拔弩张的盟友：太平洋战争期间的中美合作关系
+						</div>
+						<p class="author">作者：离开了</p>
+						
+						<div class="oldprice">￥123</div>
+						<div class="newprice"> ￥96<span class="mui-pull-right">X4</span></div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="mask-phone">
+			<ul class="mui-table-view phone-msg">
+				<li class="mui-table-view-cell mui-media">
+					<div class="title">
+						联系我们
+					</div>
+				</li>
+				
+				<li class="mui-table-view-cell mui-media" style="color:blur;">
+					<div class="ftcolor">
+						社会科学文献出版社
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<span>联系人</span>朱磊
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<span>电话:</span>010-59366469；
+					<div class="phone">18600499980</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<span>邮箱:</span>651428801@qq.com
+				</li>
+				<li class="mui-table-view-cell mui-media mui-clearfix">
+					<span class="mui-pull-left">地址:</span>
+					<div class="adress">北京市西城区北三环中路甲29号华龙大厦A座1302</div>
+				</li>
+			</ul>
+		</div>
+		<div id="back-top" class="back-top">
+			<img src="img/backTop.png"/>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+    <script src="js/zepto.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		
+		// 联系人c8c7cc
+		$('.mui-icon-phone').bind('click',function(){
+			$('.mask-phone').show();
+		});
+		$('.mask-phone').bind('click',function(){
+			$('.mask-phone').hide();
+		});
+		//返回顶部
+		$(window).scroll(function(){ 
+			
+            if($(window).scrollTop()>100){ 
+            	$('#back-top').show();
+              	return;
+            }  
+            $('#back-top').hide();
+        }) 
+        $('#back-top img').bind('click',function(){
+        	$(window).scrollTop('0');
+        	$('#back-top ').hide();
+        })
+        // 
+        $('.title .mui-icon').bind('click',function(e){
+        	var type = $(e.target).attr('data-type');
+        	var idmsg = $(e.target).attr('data-id');
+        	if(+type==0){
+        		$(e.target).removeClass('mui-icon-arrowdown').addClass('mui-icon-arrowup');
+        		$(e.target).attr('data-type','1');
+        		$('#msg'+idmsg).show();
+        	}else{
+        		$(e.target).removeClass('mui-icon-arrowup').addClass('mui-icon-arrowdown');
+        		$(e.target).attr('data-type','0');
+        		$('#msg'+idmsg).hide();
+        	}
+        })
+	</script>
+
+</html>

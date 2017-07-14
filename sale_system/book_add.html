@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<style type="text/css">
+			.book-list li {
+				position: relative;
+			}
+			
+			.book-list>li:after {
+				width: 94%;
+			}
+			
+			.book-list .mui-media>a img {
+				width: 100px;
+				height: 120px;
+				max-width: 100px;
+			}
+			
+			.title {
+				height: 50px;
+				padding-left: 10px;
+			}
+			
+			.self-search .mui-search {
+				display: inline-block;
+				width: 80%;
+				margin-top: 8px;
+			}
+			
+			.self-search .mui-search:before {
+				top: 70%;
+			}
+			
+			.self-search .mui-search input {
+				margin-bottom: 0px;
+			}
+			
+			.self-search button {
+				background: #007aff;
+				color: #fff;
+				margin-top: 8px;
+			}
+			
+			.book-title {
+				word-wrap: break-word;
+				word-break: break-all;
+				white-space: normal;
+			}
+			
+			.addgoods {
+				position: absolute;
+				right: 10px;
+				bottom: 10px;
+			}
+			
+			.addgoods span {
+				display: inline-block;
+				width: 25px;
+				height: 25px;
+				line-height: 25px;
+				text-align: center;
+				vertical-align: middle;
+			}
+			
+			.addgoods .jia {
+				background: url(img/jia1.png) no-repeat;
+				background-size: 25px 25px;
+			}
+			
+			.addgoods .jian {
+				background: url(img/jian1.png) no-repeat;
+				background-size: 25px 25px;
+			}
+			
+			.addgoods .delate {
+				border-radius: 3px;
+				border: 1px solid #8f8f94;
+				padding: 3px 8px 1px 2px;
+			}
+			
+			.oldprice {
+				text-decoration: line-through;
+			}
+			
+			.newprice {
+				color: #333333;
+			}
+			
+			.addgoods .delate {
+				border-radius: 3px;
+				border: 1px solid #8f8f94;
+				padding: 3px 8px 1px 2px;
+			}
+			
+			.mask {
+				display: none;
+				position: fixed;
+				z-index: 998;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;
+				opacity: 1;
+				background: rgba(0, 0, 0, .4)
+			}
+			
+			.mask .self-title {
+				text-align: left;
+			}
+			
+			.mask .mui-popup-text {
+				height: 30px;
+			}
+			
+			.mask select {
+				padding: 5px 15px;
+				border: 1px solid rgba(0, 0, 0, .2)!important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">会议名(称书单名)</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#tabbar" onclick="openindex()">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-outline"></span>
+				<span class="mui-tab-label">会议</span>
+			</a>
+			<a class="mui-tab-item " href="#tabbar-with-chat" onclick="openorder()">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-topic"></span>
+				<span class="mui-tab-label">订单</span>
+			</a>
+		</nav>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+		<div class="mui-scroll">
+			<div id="ll" class="title self-search">
+				<div class="mui-input-row mui-search">
+					<input type="search" class="mui-input-clear" placeholder="">
+				</div>
+				<button type="button">搜索</button>
+			</div>
+			<ul class="mui-table-view book-list">
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="imgs/1.jpg" onclick="openBookdtl()">
+						<div class="mui-media-body">
+							<div id="" class="book-title" onclick="openBookdtl()">
+								幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+							</div>
+							<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+							<div>
+								<p class="oldprice">￥22</p>
+								<p class="newprice">￥<span>13</span></p>
+							</div>
+							<div class="addgoods">
+								<p class="delate"><span class="mui-icon mui-icon-plus"></span>新增图书</p>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="imgs/2.jpg">
+						<div class="mui-media-body">
+							<div id="" class="book-title">
+								幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+							</div>
+							<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+							<div>
+								<p class="oldprice">￥22</p>
+								<p class="newprice">￥<span>16</span></p>
+							</div>
+							<div class="addgoods">
+								<p class="delate"><span class="mui-icon mui-icon-plus"></span>新增图书</p>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="imgs/3.jpg">
+						<div class="mui-media-body">
+							<div id="" class="book-title">
+								你今年你今年你今年
+							</div>
+							<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+							<div>
+								<p class="oldprice">￥22</p>
+								<p class="newprice">￥<span>15</span></p>
+							</div>
+							<div class="addgoods">
+								<p class="delate"><span class="mui-icon mui-icon-plus"></span>新增图书</p>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="imgs/4.jpg">
+						<div class="mui-media-body">
+							<div id="" class="book-title">你今年你今年你今年</div>
+							<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+							<div>
+								<p class="oldprice">￥22</p>
+								<p class="newprice">￥<span>12</span></p>
+							</div>
+							<div class="addgoods">
+								<p class="delate"><span class="mui-icon mui-icon-plus"></span>新增图书</p>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		</div>
+		<div id="mask" class="mask">
+			<div class="mui-popup mui-popup-in">
+				<div class="mui-popup-inner">
+					<div class="mui-popup-title self-title">选择图书分类</div>
+					<div class="mui-popup-text">
+						<select>
+							<option value="1">分类1</option>
+							<option value="2">分类2</option>
+							<option value="3">分类3</option>
+						</select>
+					</div>
+				</div>
+				<div class="mui-popup-buttons filter">
+					<span class="mui-popup-button" type="0">取消</span><span class="mui-popup-button " type="0">确定</span>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/zepto.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		
+		mui.init({
+			swipeBack: false,
+			pullRefresh: {
+				container: '#pullrefresh', //待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+				up: {
+					height: 50, //可选.默认50.触发上拉加载拖动距离
+					auto: false, //可选,默认false.自动上拉加载一次
+					contentrefresh: "", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+					contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+					callback: pullupRefresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+				}
+			}
+		});
+		function openindex() {
+			mui.openWindow({
+				url: "index.html",
+				id: "index",
+				waiting: {
+					autoShow: false
+				}
+			});
+		}
+
+		function openBookdtl() {
+			mui.openWindow({
+				url: "book_detail.html",
+				id: "book_detail",
+				waiting: {
+					autoShow: false
+				}
+			});
+		}
+
+		function openorder() {
+			mui.openWindow({
+				url: "order_list.html",
+				id: "order_list",
+				waiting: {
+					autoShow: false
+				}
+			});
+		}
+		function refreshEvent(){
+			mui('.addgoods').on('tap','.delate',function(){
+				$("#mask").show();
+			});
+		}
+		refreshEvent();
+		$('#mask .filter').bind("click", function(e) {
+			var type = e.target.getAttribute("type");
+			if(+type == 0) {
+				$("#mask").hide();
+			} else {
+				$("#mask").hide();
+
+			}
+		});
+		/**
+		 * 上拉加载具体业务实现
+		 */
+		function pullupRefresh() {
+			setTimeout(function() {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh(false); //参数为true代表没有更多数据了。
+				var table = document.body.querySelector('.mui-table-view');
+				var cells = document.body.querySelectorAll('.mui-table-view-cell');
+
+				for(var i = cells.length, len = i + 5; i < len; i++) {
+					var li = document.createElement('li');
+					li.className = 'mui-table-view-cell mui-media';
+					li.innerHTML =
+						'<a href="javascript:;">'+
+						'<img class="mui-media-object mui-pull-left" src="imgs/4.jpg">'+
+						'<div class="mui-media-body">'+
+							'<div id="" class="book-title">你今年你今年你今年</div>'+
+							'<p class="mui-ellipsis">作者：你今年&#12288;著</p>'+
+							'<div>'+
+								'<p class="oldprice">￥22</p>'+
+								'<p class="newprice">￥<span>12</span></p>'+
+							'</div>'+
+							'<div class="addgoods">'+
+								'<p class="delate"><span class="mui-icon mui-icon-plus"></span>新增图书</p>'+
+							'</div>'+
+						'</div>'+
+					'</a>';
+					table.appendChild(li);
+				}
+				refreshEvent();
+			}, 1500);
+		}
+	</script>
+
+</html>

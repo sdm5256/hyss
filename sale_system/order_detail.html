@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<style type="text/css">
+			.book-list li {
+				position: relative;
+			}
+			
+			.book-list .mui-media>a img {
+				width: 100px;
+				height: 120px;
+				max-width: 100px;
+			}
+			
+			.mui-content .title {
+				height: 50px;
+				line-height: 50px;
+				padding: 0px 15px;
+			}
+			
+			.chose select {
+				width: 50%;
+				padding: 5px 8px;
+				margin-left: 8px;
+				border: 1px solid #6D6D72!important;
+			}
+			
+			.book-title {
+				word-wrap: break-word;
+				word-break: break-all;
+				white-space: normal;
+			}
+			
+			.addgoods {
+				position: absolute;
+				right: 20px;
+				bottom: 10px;
+			}
+			.addgoods .good-number{
+	    		position: relative;
+	    		color: #333;
+	    		font-size: 15px;
+	    	}
+	    	.addgoods .good-number:before{
+	    		position: absolute;
+	    		top:-2px;
+	    		left: -11px;
+	    		content: 'X';	
+	    	}
+			
+			.oldprice {
+				text-decoration: line-through;
+			}
+			
+			.newprice {
+				color: #007aff;
+	    		font-size: 17px;
+			}
+			
+			.telmsg {
+				padding-bottom: 52px;
+			}
+			
+			.telmsg .title {
+				text-align: center;
+			}
+			
+			.book-list:before,
+			.msg:before {
+				background: #fff;
+			}
+			
+			.msg .mui-input-row:after {
+				left: 5px;
+			}
+			
+			.msg label {
+				float: left;
+				width: 65px;
+				padding: 11px 5px;
+			}
+			
+			.msg .mui-input-row input {
+				float: left;
+				width: 75%;	
+			}
+			.msg .addres{
+				min-height: 40px;
+				height: auto;
+				padding: 11px 5px;
+			}
+			.msg .addres>div{
+				position: relative;
+				margin-left: 60px;
+				word-wrap: break-word;
+	     		word-break: break-all;
+	    		white-space: normal;
+			}
+			.msg .addres>div:before{
+				position: absolute;
+				top: 0;
+				left: -60px;
+				content: '地址';
+			}
+			.fapiao form:before,.fapiao form:after,.fapiao .mui-input-group .mui-input-row:after{
+				background: #fff;
+			}
+			.fapiao .mui-table-view li{
+				padding-bottom: 10px;
+			}
+			.fapiao .mui-table-view li:nth-child(2){
+				padding-bottom: 5px;
+			}
+			.fapiao .mui-table-view li>p{
+				min-height: 28px;
+    			line-height: 28px;
+    			font-size: 16px;
+    			word-wrap: break-word;
+	     		word-break: break-all;
+	    		white-space: normal;
+			}
+			.fapiao .mui-input-group .mui-input-row {
+				display: inline-block;
+				font-size: 14px;
+				height: 36px;
+			}
+			.fapiao .mui-input-group .cpmname{
+				width: 100%;
+			}
+			
+			.sumprice span{
+				position: relative;
+				float: right;
+				color: #007aff;
+			}
+			.sumprice span:before{
+				position: absolute;
+				top: 0px;
+				left: -13px;
+				content: "￥";
+				width: 20px;
+			}
+			.payway span:before{
+				content: "";
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">确认订单</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item " href="index.html" onclick="openindex()">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-outline"></span>
+				<span class="mui-tab-label">会议</span>
+			</a>
+			<a class="mui-tab-item mui-active" href="order_list.html" onclick="openOrderList()">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-topic"></span>
+				<span class="mui-tab-label">订单</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<ul class="mui-table-view book-list">
+				<li class="mui-table-view-cell mui-media">
+					<div class="mui-collapse-content">
+						<form class="mui-input-group msg">
+							<div class="mui-input-row">
+								<label>收货人</label>
+								<input type="text" readonly="readonly" value="斯大林">
+							</div>
+							<div class="mui-input-row">
+								<label>手机号</label>
+								<input type="text" readonly="readonly" value="4512033698">
+							</div>
+							<div class="mui-input-row">
+								<label>邮箱</label>
+								<input type="text" readonly="readonly" value="241d44@ww.com">
+							</div>
+							<div class="mui-input-row addres">
+								<!--<label>地&#12288;址</label>
+								<input type="text" readonly="readonly" value="北京市朝阳区备忘朝阳区备忘大姐182好">-->
+								<div id="">
+									北京市朝阳区备忘朝阳区备忘大姐182好	
+								</div>
+							</div>
+						</form>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="imgs/1.jpg">
+						<div class="mui-media-body">
+							<div id="" class="book-title">
+								幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+							</div>
+							<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+							<div>
+								<p class="oldprice">￥22</p>
+								<p class="newprice">￥<span>16</span></p>
+							</div>
+							<div class="addgoods">
+								<p><span class="good-number">5</span></p>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="imgs/2.jpg">
+						<div class="mui-media-body">
+							<div id="" class="book-title">
+								你今年你今年你今年
+							</div>
+							<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+							<div>
+								<p class="oldprice">￥22</p>
+								<p class="newprice">￥<span>15</span></p>
+							</div>
+							<div class="addgoods">
+								<p><span class="good-number">5</span></p>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<div class="telmsg fapiao">
+				<div class="title">发票信息</div>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<span>发票类型：</span><span>普通发票</span>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>发票抬头：</span><span>单位</span>
+						<p>社会科学文献出版社</p>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>发票内容：图书</span><span>需要明细</span>	
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="sumprice">商品总额<span>56</span></div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="sumprice payway">支付方式<span>微信支付</span></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+    <script src="js/zepto.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+
+		function openindex(){
+			mui.openWindow({
+				url: "index.html",
+				id: "index",
+				waiting: {
+					autoShow: false
+				}
+			});
+		}
+		function openOrderList(){
+			mui.openWindow({
+				url: "order_list.html",
+				id: "order_list",
+				waiting: {
+					autoShow: false
+				}
+			});
+		}
+	</script>
+
+</html>

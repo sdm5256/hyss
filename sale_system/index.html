@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+		<style>
+			.title {
+				margin: 12px 15px 10px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+			
+			.oa-contact-cell.mui-table .mui-table-cell {
+				padding: 11px 0;
+				vertical-align: middle;
+			}
+			
+			.oa-contact-cell {
+				position: relative;
+				margin: -11px 0;
+			}
+			
+			.oa-contact-avatar {
+				width: 75px;
+			}
+			
+			.oa-contact-avatar img {
+				border-radius: 50%;
+			}
+			
+			.oa-contact-content {
+				width: 100%;
+			}
+			
+			.oa-contact-name {
+				margin-right: 20px;
+			}
+			
+			.oa-contact-name,
+			oa-contact-position {
+				float: left;
+			}
+			
+			#sliderSegmentedControl {
+				border-bottom: 1px solid #c8c7cc;
+			}
+			
+			#sliderSegmentedControl>.mui-active {
+				border-bottom: 3px solid #007aff;
+			}
+			
+			.self-search {
+				position: relative;
+				text-align: center;
+			}
+			
+			.self-search .mui-input-row{
+				display: inline-block;
+				width: 60%;
+				margin-top: 8px;
+			}
+			.self-search .mui-input-row span{
+				position: absolute;
+				top: 4px;
+				left: 2px;
+			}
+			.self-search .mui-input-row input{
+				margin-bottom: 0;
+				height: 33px;
+				padding-left: 25px;
+			}
+			
+			.self-search button {
+				background: #007aff;
+				color: #fff;
+				margin-top: 8px;
+			}
+			
+			.self-search a {
+				position: absolute;
+				top: 10px;
+				right: 20px;
+			}
+			
+			.self-search a span {
+				font-size: 28px;
+			}
+			
+			.meeting-list .lists li {
+				position: relative;
+				padding-left: 28px;
+				padding-right: 35px;
+			}
+			
+			.meeting-list .lists li:after {
+				width: 90%;
+			}
+			
+			.meeting-list .lists li .icon-meeting {
+				position: absolute;
+				top: 8px;
+				left: 2px;
+				color: #6d6d72;
+			}
+			
+			.lists li:nth-child(odd)>.icon-meeting {
+				color: #007aff;
+			}
+			
+			.lists li p {
+				padding: 5px 0px;
+			}
+			.lists li .meeting-name {
+				margin-top: 8px;
+			}
+			.lists li .meeting-name p:first-child {
+				color: #000;
+			}
+			
+			.lists li .meeting-name span {
+				font-size: 15px;
+			}
+			
+			.seedetail {
+				float: right;
+				color: #007aff;
+				font-size: 14px;
+				border-radius: 3px;
+				border: 1px solid #007aff;
+				padding: 3px 13px;
+				margin-top: -4px;
+			}
+			
+			.book-list li {
+				position: relative;
+			}
+			
+			.book-list .mui-media>a {
+				margin-top: 5px;
+			}
+			
+			.book-list .mui-media>a img {
+				width: 100px;
+				height: 120px;
+				max-width: 100px;
+			}
+			
+			.order-msg>p {
+				line-height: 26px;
+			}
+			
+			.order-msg>div {
+				line-height: 25px;
+				border-bottom: 1px solid #c8c7cc;
+			}
+			
+			.order-msg .phone {
+				float: right;
+			}
+			
+			.revers-price>div {
+				text-align: right;
+			}
+			
+			.revers-price>div:first-child {
+				line-height: 32px;
+				border-bottom: 1px solid #c8c7cc;
+			}
+			
+			.revers-price>div>a {
+				margin-left: 20px;
+				font-size: 16px;
+			}
+			
+			.revers-price>div:last-child {
+				padding-top: 15px;
+			}
+			
+			.book-title {
+				word-wrap: break-word;
+				word-break: break-all;
+				white-space: normal;
+			}
+			
+			.addgoods {
+				position: absolute;
+				right: 20px;
+				bottom: 10px;
+			}
+			
+			.addgoods .good-number {
+				position: relative;
+				font-size: 15px;
+			}
+			
+			.addgoods .good-number:before {
+				position: absolute;
+				top: -2px;
+				left: -11px;
+				content: 'X';
+			}
+			
+			.addgoods .delate {
+				border-radius: 3px;
+				border: 1px solid #8f8f94;
+				padding: 3px 8px 1px 2px;
+			}
+			
+			.oldprice {
+				text-decoration: line-through;
+			}
+			
+			.newprice {
+				color: #007aff;
+				font-size: 17px;
+			}
+			
+			.mask {
+				display: none;
+				position: fixed;
+				z-index: 998;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;
+				opacity: 0;
+				background: rgba(0, 0, 0, .4)
+			}
+			
+			.mask .mui-popup-text {
+				background: #fff;
+			}
+			
+			.mask .mui-popup-in {
+				display: block;
+			}
+			
+			.mui-input-group:before,
+			.mui-input-group:after,
+			.mui-input-group .mui-input-row:after {
+				background: #fff;
+			}
+			
+			.mui-input-group .mui-input-row {
+				display: inline-block;
+				font-size: 14px;
+				height: 36px;
+				margin-right: 12px;
+			}
+			
+			.mui-input-group .mui-input-row label {
+				padding-left: 20px;
+				padding-right: 2px;
+			}
+			
+			.mui-input-group .mui-input-row input[type=radio] {
+				top: 8px;
+				left: 0px;
+			}
+			
+			.mui-input-group .mui-input-row input[type=radio]:checked:before {
+				content: '\e442';
+			}
+			
+			.mui-input-group .mui-input-row input:before {
+				font-size: 20px;
+			}
+			
+			.mask .timetip {
+				text-align: left;
+				margin-left: 10px;
+				color: #000;
+			}
+			
+			.selectedate input {
+				width: 43%;
+				font-size: 14px;
+				height: 30px;
+				padding: 10px 10px;
+			}
+			
+			.mask select {
+				border: 1px solid rgba(0, 0, 0, .2)!important;
+				width: 90%;
+				padding: 3px 15px;
+			}
+			
+			#mask2 .text2>p {
+				padding-top: 10px;
+			}
+			
+			#mask2 .text2>input {
+				height: 30px;
+				width: 93%;
+				font-size: 14px;
+				margin-bottom: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+			<h1 class="mui-title">会议售书系统</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#tabbar">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-outline"></span>
+				<span class="mui-tab-label">会议</span>
+			</a>
+			<a class="mui-tab-item " href="#tabbar-with-chat" onclick="openorder()">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-topic"></span>
+				<span class="mui-tab-label">订单</span>
+			</a>
+		</nav>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+
+			<div class="mui-scroll">
+
+				<div id="tabbar" class="mui-control-content  meeting-list mui-active">
+					<div class="title self-search">
+						<div class="mui-input-row ">
+							<input type="text" placeholder="">
+							<span class="mui-icon mui-icon-search"></span>
+						</div>
+						<button type="button">搜索</button>
+						<!--<a><span class="mui-icon mui-icon-info-filled"></span></a>-->
+						<button type="button" onclick="meetingFilte()">筛选</button>
+					</div>
+
+					<ul class="mui-table-view mui-table-view-chevron lists">
+						<li class="mui-table-view-cell">
+
+							<span class="mui-icon mui-icon-star-filled icon-meeting"></span>
+							<div>
+								<span>2017-10-22</span>
+								<!--<button id='promptBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">查看书单</button>-->
+								<a id="hhh" href="book_manage.html" class="seedetail">查看书单</a>
+							</div>
+							<div class="meeting-name">
+								<p class="mt-name">这种模式适合简单业务系统，因为每个选项卡内容要写在一个DIV中，造成webview响应缓慢，甚至崩溃</p>
+								<p>this is a meeting of hhing rfddre</p>
+								<span>地点：北京</span>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<span class="mui-icon mui-icon-star-filled icon-meeting"></span>
+							<div>
+								<span>2017-10-22</span>
+								<a class="seedetail">查看书单</a>
+							</div>
+							<div class="meeting-name">
+								<p>这种模式适合简单业务系统，因为每个选项卡内容要写在一个DIV中，造成webview响应缓慢，甚至崩溃</p>
+								<p>this is a meeting of hhing rfddre</p>
+								<span>地点：北京</span>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<span class="mui-icon mui-icon-star-filled icon-meeting"></span>
+							<div>
+								<span>2017-10-22</span>
+								<a class="seedetail">查看书单</a>
+							</div>
+							<div class="meeting-name">
+								<p>这种模式适合简单业务系统，因为每个选项卡内容要写在一个DIV中，造成webview响应缓慢，甚至崩溃</p>
+								<p>this is a meeting of hhing rfddre</p>
+								<span>地点：北京</span>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<span class="mui-icon mui-icon-star-filled icon-meeting"></span>
+							<div>
+								<span>2017-10-22</span>
+								<a class="seedetail">查看书单</a>
+							</div>
+							<div class="meeting-name">
+								<p>这种模式适合简单业务系统，因为每个选项卡内容要写在一个DIV中，造成webview响应缓慢，甚至崩溃</p>
+								<p>this is a meeting of hhing rfddre</p>
+								<span>地点：北京</span>
+							</div>
+						</li>
+
+					</ul>
+				</div>
+
+			</div>
+		</div>
+		<div id="mask" class="mask">
+			<div class="mui-popup mui-popup-in">
+				<div class="mui-popup-inner">
+					<div class="mui-popup-title">筛选</div>
+					<div class="mui-popup-text">
+						<div class="mui-input-group">
+							<div class="mui-input-row mui-radio mui-left">
+								<label>全部</label>
+								<input name="billType" type="radio" value="0">
+							</div>
+							<div class="mui-input-row mui-radio mui-left">
+								<label>已召开</label>
+								<input name="billType" type="radio" value="1">
+							</div>
+							<div class="mui-input-row mui-radio mui-left">
+								<label>未召开</label>
+								<input name="billType" type="radio" value="2">
+							</div>
+						</div>
+						<p class="timetip">会议时间段</p>
+						<div class="selectedate">
+							<input class="datenow" name="startTime" type="text" readonly="readonly" value="选择时间">
+							<span>-</span>
+							<input class="datenow" name="endTime" type="text" readonly="readonly" value="选择时间">
+						</div>
+						<p class="timetip">会议地点</p>
+						<select>
+							<option value="1">北京</option>
+							<option value="2">上海</option>
+							<option value="3">广州</option>
+						</select>
+					</div>
+				</div>
+				<div class="mui-popup-buttons filter">
+					<span class="mui-popup-button" type="0">重置</span><span class="mui-popup-button " type="1">确定</span>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/zepto.js"></script>
+	<script src="js/mui.min.js"></script>
+	<script src="js/mui.picker.min.js"></script>
+	<script>
+		mui.init({
+			swipeBack: false,
+			pullRefresh: {
+				container: '#pullrefresh', //待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+				up: {
+					height: 50, //可选.默认50.触发上拉加载拖动距离
+					auto: false, //可选,默认false.自动上拉加载一次
+					contentrefresh: "", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+					contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+					callback: pullupRefresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+				}
+			}
+		});
+
+		function openorder() {
+			mui.openWindow({
+				url: "order_list.html",
+				id: "order_list",
+				waiting: {
+					autoShow: false
+				}
+			});
+		}
+		//事件监听 初始化
+		function eventInit() {
+			//查看书单
+			mui('.mui-table-view-cell').on("tap", ".seedetail", function() {
+				var meetingId = this.getAttribute("data-id");
+				mui.openWindow({
+					url: "book_manage.html",
+					id: "book_manage.html",
+					waiting: {
+						autoShow: false
+					}
+				});
+			});
+			//会议详情页
+			mui('.meeting-name').on("tap", ".mt-name", function() {
+				var id = this.getAttribute("data-id");
+				mui.openWindow({
+					url: "meeting_detail.html",
+					id: "meeting_detail",
+					waiting: {
+						autoShow: false
+					}
+				});
+			});
+		}
+		eventInit();
+		var datetime = new Date();
+		var endYear = datetime.getFullYear();
+		var options = {
+			"type": "date"
+		};　　　　
+		var result = mui(".datenow");　　　　
+		mui(".datenow")[0].addEventListener('tap', function() {
+			//var optionsJson = this.getAttribute('data-options') || '{}';
+			//var options = JSON.parse({"type":"date","beginYear":2016,"endYear":2017});　　　　　
+			var picker = new mui.DtPicker(options);　　　　　　
+			picker.show(function(rs) {　　　　　　　　
+				result[0].value = rs.text;　　　　　　　　
+				picker.dispose();　　　　　　
+			});　　　　
+		}, false);
+		mui(".datenow")[1].addEventListener('tap', function() {　　　　
+			var picker = new mui.DtPicker(options);　　　　　　
+			picker.show(function(rs) {　　　　　　　　
+				result[1].value = rs.text;　　　　　　　　
+				picker.dispose();　　　　　　
+			});　　　　
+		}, false);
+
+		function meetingFilte() {
+			$("#mask").show().css('opacity', '1');
+		}
+		$('#mask .filter').bind("click", function(e) {
+			var type = e.target.getAttribute("type");
+			if(+type == 0) {
+				$("#mask").hide();
+			} else {
+				$("#mask").hide();
+
+			}
+		});
+		
+		var count = 0;
+		/**
+		 * 上拉加载具体业务实现
+		 */
+		function pullupRefresh() {
+			setTimeout(function() {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh(false); //参数为true代表没有更多数据了。
+				var table = document.body.querySelector('.mui-table-view');
+				var cells = document.body.querySelectorAll('.mui-table-view-cell');
+
+				for(var i = cells.length, len = i + 5; i < len; i++) {
+					var li = document.createElement('li');
+					li.className = 'mui-table-view-cell';
+					li.innerHTML = '<span class="mui-icon mui-icon-star-filled icon-meeting"></span>' +
+						'<div>' +
+						'<span>2017-10-22</span>' +
+						'<a class="seedetail">查看书单</a>' +
+						'</div>' +
+						'<div class="meeting-name">' +
+						'<p>这种模式适合简单业务系统，因为每个选项卡内容要写在一个DIV中，造成webview响应缓慢，甚至崩溃</p>' +
+						'<p>this is a meeting of hhing rfddre</p>' +
+						'<span>地点：北京</span>' +
+						'</div>';
+					table.appendChild(li);
+				}
+				eventInit();
+			}, 1500);
+		}
+	</script>
+
+</html>

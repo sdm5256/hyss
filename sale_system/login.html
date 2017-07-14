@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			html,body{
+				height: 100%;
+			}
+			.mui-content{
+				background: #EFF6FF;
+				height: 100%;
+			}
+			.login {
+				margin-top: 35%;
+				text-align: center;
+			}
+			.login img{
+				display: block;
+				width: 120px;
+				height: 120px;
+				margin: 0 auto;
+			}
+			.login button{
+				background: #2187E7;
+				width: 100px;
+				color: #fff;
+			}
+			.logo-title{
+				font-size: 35px;
+				padding: 10px 0px 30px 0px;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+			<h1 class="mui-title">会议售书系统</h1>
+		</header>
+		<div class="mui-content">
+			<div class="login">
+				<img src="imgs/logo.jpg"/>
+				<div class="logo-title">社会科学文献<br>出版社</div>
+				<button id="confirm-login" type="button" >登录</button>
+			</div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		document.getElementById("confirm-login").addEventListener('click', function() {
+			mui.openWindow({
+				url: "index.html",
+				id: "index",
+				waiting: {
+					autoShow: false
+				}
+			});
+		});
+	</script>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<style type="text/css">
+			body{
+				font-family: "微软雅黑";
+			}
+			.title{
+				height: 40px;
+				line-height: 40px;
+				color: #333;
+				font-size: 12px;
+				padding-left: 16px;
+				border-bottom: 1px solid #e5e5e5;
+			}
+			.title .mui-icon{
+				padding: 8px 16px 0px 8px;
+			}
+			
+			.mui-table-view{
+				background: #fff;
+			}
+			.mui-table-view:before,.mui-table-view:after{
+				background: #e5e5e5;
+			}
+			.msglist li{
+				padding: 10px 16px;
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: row ;
+				align-items: center;
+			}
+			.mui-table-view-cell:after{
+				left: 0;
+				background: #e5e5e5;
+			}
+			.msglist li .item-left{
+				display: inline-block;
+				color: #666;
+				font-size: 14px;
+				flex: 1;
+				flex: 0 0 30%;
+			}
+			.msglist li .item-right{
+				display: inline-block;
+				color: #333;
+				font-size: 14px;
+				flex: 1;
+				text-align: right;
+				flex-wrap:  wrap;
+			}
+			.msglist li .ft-color{
+				color: #E43330;
+			}
+			.booklist li{
+				padding: 10px 16px;
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: row ;
+				position: relative;
+			}
+			.booklist li .list-left{
+				flex: 0 0 100px;
+			}
+			.booklist li .list-left img{
+				width: 100px;
+				height: 125px;
+			}
+			.booklist li .list-right{
+				flex: 1;
+				color: #333;
+				font-size: 14px;
+			}
+			.booklist li .author{
+				color: #999;
+				font-size: 12px;
+				margin-top: 5px;
+			}
+			.booklist li .oldprice{
+				color: #999;
+				font-size: 12px;
+				text-decoration: line-through;
+				margin-top: 5px;
+			}
+			.booklist li .newprice{
+				color: #333;
+				font-size: 12px;
+				margin-top: 5px;
+			}
+			.msglist .hide{
+				display: none;
+			}
+			.mask-phone{
+				display: none;
+				position: fixed;
+			    z-index: 998;
+			    top: 0;
+			    right: 0;
+			    bottom: 0;
+			    left: 0;
+			    -webkit-transition-duration: 400ms;
+			    transition-duration: 400ms;
+			    opacity: 1;
+			    background: rgba(0, 0, 0, .4);
+			}
+			.mask-phone .phone-msg{
+				width: 80%;
+			    margin: 0 auto;
+			    margin-top: 150px;
+			    border-radius: 4px;
+			    font-size: 14px;
+			}
+			.mask-phone .phone-msg span{
+				display: inline-block;
+				width: 55px;
+				font-weight: 600;
+			}
+			.mask-phone .phone-msg .title{
+				text-align: center;
+			}
+			.mask-phone .phone-msg .ftcolor{
+				color: blue;
+			}
+			.mask-phone .phone-msg .phone{
+				margin: 5px 0px 0px 55px;
+			}
+			.mask-phone .phone-msg .adress{
+				float: left;
+				width: 75%;
+			}
+			.back-top{
+				display: none;
+				position: fixed;
+				bottom: 120px;
+				right: 10px;
+			}
+			.back-top img{
+				width: 40px;
+				height: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">订单详情
+			
+			</h1>
+			<span class=" mui-icon mui-icon-phone  mui-pull-right"></span>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item huiyi" href="#tabbar">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-outline"></span>
+				<span class="mui-tab-label">会议</span>
+			</a>
+			<a class="mui-tab-item mui-active dingdan" href="#tabbar-with-chat">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-topic"></span>
+				<span class="mui-tab-label">订单</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			
+			<div class="title">收货人信息 </div>
+			<ul id="msg2" class="mui-table-view msglist">
+				<li class="mui-table-view-cell"><span class="item-left">收货人</span><span class="item-right">${orders.buyerName}</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">手机号</span><span class="item-right">${orders.buyerTelephone}</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">邮箱</span><span class="item-right">${orders.buyerEmail}</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">地址</span><span class="item-right">${orders.buyerAddress }</span></li>
+			</ul>
+			<div class="title">发票信息<span class=" mui-icon mui-icon-arrowup mui-pull-right" data-id="3" data-type="1"></span></div>
+			<ul id="msg3" class="mui-table-view msglist">
+				<li class="mui-table-view-cell">
+					<span class="item-left">发票类型</span>
+					<span class="item-right">
+						<c:if test="${orders.invoiceType==1}">不要发票</c:if>
+						<c:if test="${orders.invoiceType==2}">普通发票</c:if>
+						<c:if test="${orders.invoiceType==3}">增值税专用发票</c:if>
+					</span>
+				</li>
+				<li class="mui-table-view-cell">
+					<span class="item-left">发票抬头</span>
+					<span class="item-right">
+					<c:if test="${orders.invoiceHeader==1}">个人</c:if>
+					<c:if test="${orders.invoiceHeader==2}">单位</c:if>
+					</span>
+				</li>
+				<li class="mui-table-view-cell"><span class="item-left">纳税人名称</span><span class="item-right">${orders.invoiceContent}</span></li>
+				<li class="mui-table-view-cell ${orders.invoiceTaxpayerNumber==''||orders.invoiceTaxpayerNumber==null?'hide':'' }"><span class="item-left">纳税人识别号</span><span class="item-right">${orders.invoiceTaxpayerNumber}</span></li>
+				<li class="mui-table-view-cell ${orders.invoiceCompanyAddress==''||orders.invoiceCompanyAddress==null?'hide':'' }"><span class="item-left">公司地址</span><span class="item-right">${orders.invoiceCompanyAddress}</span></li>
+				<li class="mui-table-view-cell ${orders.invoiceCompanyPhone==''||orders.invoiceCompanyPhone==null?'hide':'' }"><span class="item-left">公司电话</span><span class="item-right">${orders.invoiceCompanyPhone}</span></li>
+				<li class="mui-table-view-cell ${orders.invoiceCompanyBankName==''||orders.invoiceCompanyBankName==null?'hide':'' }"><span class="item-left">开户行支行</span><span class="item-right">${orders.invoiceCompanyBankName}</span></li>
+				<li class="mui-table-view-cell ${orders.invoiceCompanyBankNumber==''||orders.invoiceCompanyBankNumber==null?'hide':'' }"><span class="item-left">开户账号</span><span class="item-right">${orders.invoiceCompanyBankNumber}</span></li>
+				<li class="mui-table-view-cell "><span class="item-left">发票内容</span><span class="item-right">图书</span></li>
+				<li class="mui-table-view-cell"><span class="item-left">需要明细</span><span class="item-right">${orders.description==1?'需要明细':'不需要明细' }</span></li>
+			</ul>
+			
+			<div class="title">图书明细  <span class=" mui-icon mui-icon-arrowup mui-pull-right" data-id="6" data-type="1"></span></div>
+			<ul id="msg6" class="mui-table-view booklist">
+				<c:forEach items="${orders.ordersItemsList }" var="ordersItems">
+				<li class="mui-table-view-cell">
+					<div class="list-left"><img src="${ordersItems.resource.logopath }"></div>
+					<div class="list-right">
+						<div class="book-title">
+							${ordersItems.resource.titlecn }
+						</div>
+						<p class="author">作者：${ordersItems.resource.authors }</p>
+						
+						<div class="oldprice">￥<fmt:formatNumber pattern="#,#00.00#" value="${ordersItems.resource.paperprice }"/></div>
+						<div class="newprice"> ￥<fmt:formatNumber pattern="#,#00.00#" value="${ordersItems.resource.paperprice2}"/><span class="mui-pull-right">X${ordersItems.number}</span></div>
+						
+					</div>
+				</li>
+				</c:forEach>
+				<li class="mui-table-view-cell">
+					<div class="list-left"><img src="img/3.jpg"></div>
+					<div class="list-right">
+						<div class="book-title">
+							剑拔弩张的盟友：太平洋战争期间的中美合作关系
+						</div>
+						<p class="author">作者：离开了</p>
+						
+						<div class="oldprice">￥123</div>
+						<div class="newprice"> ￥96<span class="mui-pull-right">X4</span></div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="mask-phone">
+			<ul class="mui-table-view phone-msg">
+				<li class="mui-table-view-cell mui-media">
+					<div class="title">
+						联系我们
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media" style="color:blur;">
+					<div class="ftcolor">
+						社会科学文献出版社
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<span>联系人</span>朱磊
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<span>电话:</span>010-59366469；
+					<div class="phone">18600499980</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<span>邮箱:</span>651428801@qq.com
+				</li>
+				<li class="mui-table-view-cell mui-media mui-clearfix">
+					<span class="mui-pull-left">地址:</span>
+					<div class="adress">北京市西城区北三环中路甲29号华龙大厦A座1302</div>
+				</li>
+			</ul>
+		</div>
+		<div id="back-top" class="back-top">
+			<img src="img/backTop.png"/>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+    <script src="js/zepto.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		
+		// 联系人c8c7cc
+		$('.mui-icon-phone').bind('click',function(){
+			$('.mask-phone').show();
+		});
+		$('.mask-phone').bind('click',function(){
+			$('.mask-phone').hide();
+		});
+		//返回顶部
+		$(window).scroll(function(){ 
+			
+            if($(window).scrollTop()>100){ 
+            	$('#back-top').show();
+              	return;
+            }  
+            $('#back-top').hide();
+        }) 
+        $('#back-top img').bind('click',function(){
+        	$(window).scrollTop('0');
+        	$('#back-top ').hide();
+        })
+        
+        mui('.mui-bar').on('tap','.huiyi',function(){
+			mui.openWindow({
+				url: "${ctx}/sales/index",
+				id: "index",
+				waiting: {
+					autoShow: false
+				}
+			});
+		});
+		mui('.mui-bar').on('tap','.dingdan',function(){
+				mui.openWindow({
+					url: "${ctx}/sales/orders/list?status=1",
+					id: "order_list",
+					waiting: {
+						autoShow: false
+					}
+				});
+		});
+	</script>
+
+</html>

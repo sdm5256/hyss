@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<style type="text/css">
+			body{
+				background: #fff;
+			}
+			.mui-content{
+				background: #fff;
+				padding: 10px 15px;
+			}
+			h5{
+				color: #333;
+    			font-size: 14px;
+    			line-height: 28px;
+    			text-align: center;
+    			padding-top: 15px;
+    			margin: 0;
+			}
+			.date{
+				color: #666;
+				font-size: 12px;
+    			line-height: 26px;
+    			text-align: center;
+    			margin: 0;
+			}
+			.mui-content ul{
+				padding: 0;
+				margin: 0;
+			}
+			.mui-content ul li{
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: row ;
+				align-items: center;
+				list-style: none;
+				padding-top: 10px;
+			}
+			.title{
+				color: #333;
+				font-size: 14px;
+				font-weight: 600;
+				padding-left: 15px;
+				flex: 0 0 30%;
+			}
+			.msgcont{
+				color: #666;
+				font-size: 14px;
+				flex: 1;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">会议详情</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#tabbar" onclick="openindex()">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-outline"></span>
+				<span class="mui-tab-label">会议</span>
+			</a>
+			<a class="mui-tab-item " href="#tabbar-with-chat" onclick="openorder()">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-topic"></span>
+				<span class="mui-tab-label">订单</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<h5>学会将于2017年6月中旬在青海西宁召开“中外关系史视野下的丝绸之路与西北民族学术研讨会”（专题会）</h5>
+			<p class="date">2015-06-03</p>
+			<ul>
+				<li><span class="title">会议开始时间</span><span class="msgcont"></span></li>
+				<li><span class="title">会议结束时间</span><span class="msgcont">2016-6-12</span></li>
+				<li><span class="title">举办单位</span><span class="msgcont">中科院</span></li>
+				<li><span class="title">城市</span><span class="msgcont">北京</span></li>
+				<li><span class="title">详细地点</span><span class="msgcont">北京市海淀区168号国际会议中新</span></li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/zepto.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		
+		function openindex(){
+			mui.openWindow({
+				url: "index.html",
+				id: "index",
+				waiting: {
+					autoShow: false
+				}
+			});
+		}
+		function openorder(){
+			mui.openWindow({
+				url: "order_list.html",
+				id: "order_list",
+				waiting: {
+					autoShow: false
+				}
+			});
+		}
+	</script>
+
+</html>

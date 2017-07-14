@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<style type="text/css">
+			
+			.book-list li {
+				position: relative;
+			}
+			
+			.book-list .mui-media>a img {
+				width: 100px;
+				height: 120px;
+				max-width: 100px;
+			}
+			
+			.mui-content .title {
+				height: 50px;
+				line-height: 50px;
+				padding: 0px 15px;
+			}
+			.book-class{
+				padding: 10px 15px;
+				background: #fff;
+			}
+			.chose {
+				text-align: center;
+			}
+			
+			.chose select {
+				width: 50%;
+				padding: 5px 8px;
+				margin-left: 8px;
+				border: 1px solid #6D6D72!important;
+			}
+			
+			.chose>a {
+				display: inline-block;
+				width: 70%;
+				height: 34px;
+				line-height: 34px;
+				border-radius: 3px;
+				background: #007aff;
+				color: #fff;
+			}
+			
+			.chose>a>span {
+				margin-right: 8px;
+			}
+			.chose .preview,.chose .qrcode{
+				margin-left: 10px;
+			}
+			.chose .qrcode{
+				display: inline-block;
+				width: 25px;
+				height: 25px;
+				position: relative;
+			}
+			.qrcode:before{
+				position: absolute;
+				top: 8px;
+				left: 0;
+				content: '';
+				width: 25px;
+				height: 25px;
+				background: url(imgs/qrcode.png) no-repeat;
+				background-size: 25px 25px;
+			}
+			.book-title {
+				word-wrap: break-word;
+				word-break: break-all;
+				white-space: normal;
+			}
+			
+			.addgoods {
+				position: absolute;
+				right: 10px;
+				bottom: 10px;
+			}
+			
+			.addgoods span {
+				display: inline-block;
+				width: 25px;
+				height: 25px;
+				line-height: 25px;
+				text-align: center;
+				vertical-align: middle;
+			}
+			
+			.addgoods .jia {
+				background: url(img/jia1.png) no-repeat;
+				background-size: 25px 25px;
+			}
+			
+			.addgoods .jian {
+				background: url(img/jian1.png) no-repeat;
+				background-size: 25px 25px;
+			}
+			
+			.addgoods .delate {
+				border-radius: 3px;
+				border: 1px solid #8f8f94;
+				padding: 3px 8px 1px 2px;
+			}
+			
+			.oldprice {
+				text-decoration: line-through;
+			}
+			
+			.newprice {
+				color: #333333;
+			}
+			.mask {
+				display: none;
+				position: fixed;
+				z-index: 998;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;
+				opacity: 1;
+				background: rgba(0, 0, 0, .4)
+			}
+			.mask img{
+				display: block;
+				margin: 0 auto;
+				margin-top: 45%;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">会议名(称书单名)</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#tabbar" onclick="openindex()">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-outline"></span>
+				<span class="mui-tab-label">会议</span>
+			</a>
+			<a class="mui-tab-item " href="#tabbar-with-chat" onclick="openorder()">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-topic"></span>
+				<span class="mui-tab-label">订单</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<div id="ll" class="title chose">
+				<a href="book_add.html"><span class="mui-icon mui-icon-plus"></span>新增图书</a>
+				<span class="mui-icon mui-icon-redo  preview"></span><span class="qrcode" onclick="showqrode()"></span>
+			</div>
+			<div id="mask" class="mask">
+				<img src="imgs/qrcode.png" />
+			</div>
+			<div class="book-class">
+				图书分类(3/5)
+			</div>
+			<ul class="mui-table-view book-list">
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="imgs/1.jpg">
+						<div class="mui-media-body">
+							<div id="" class="book-title" onclick="opendetail()">
+								幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+							</div>
+							<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+							<div>
+								<p class="oldprice">￥22</p>
+								<p class="newprice">￥<span>13</span></p>
+							</div>
+							<div class="addgoods">
+								<p id='confirmBtn' class="delate"><span class="mui-icon mui-icon-trash"></span>删除图书</p>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="imgs/2.jpg">
+						<div class="mui-media-body">
+							<div id="" class="book-title">
+								幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸福幸
+							</div>
+							<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+							<div>
+								<p class="oldprice">￥22</p>
+								<p class="newprice">￥<span>16</span></p>
+							</div>
+							<div class="addgoods">
+								<p class="delate"><span class="mui-icon mui-icon-trash"></span>删除图书</p>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="imgs/3.jpg">
+						<div class="mui-media-body">
+							<div id="" class="book-title">
+								你今年你今年你今年
+							</div>
+							<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+							<div>
+								<p class="oldprice">￥22</p>
+								<p class="newprice">￥<span>15</span></p>
+							</div>
+							<div class="addgoods">
+								<p class="delate"><span class="mui-icon mui-icon-trash"></span>删除图书</p>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="imgs/1.jpg">
+						<div class="mui-media-body">
+							<div id="" class="book-title">你今年你今年你今年</div>
+							<p class='mui-ellipsis'>作者：你今年&#12288;著</p>
+							<div>
+								<p class="oldprice">￥22</p>
+								<p class="newprice">￥<span>12</span></p>
+							</div>
+							<div class="addgoods">
+								<p class="delate"><span class="mui-icon mui-icon-trash"></span>删除图书</p>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<div class="mask-phone">
+				
+			</div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/zepto.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		function openindex(){
+			mui.openWindow({
+				url: "index.html",
+				id: "index",
+				waiting: {
+					autoShow: false
+				}
+			});
+		}
+		function opendetail() {
+			mui.openWindow({
+				url: "product_detail.html",
+				id: "product_detail",
+				waiting: {
+					autoShow: false
+				}
+			});
+		}
+		function openorder(){
+			mui.openWindow({
+				url: "order_list.html",
+				id: "order_list",
+				waiting: {
+					autoShow: false
+				}
+			});
+		}
+		document.getElementById("confirmBtn").addEventListener('tap', function() {
+			var btnArray = ['否', '是'];
+			mui.confirm('你确认删除图书', '', btnArray, function(e) {
+				if(e.index == 1) {
+					//info.innerText = '你刚确认MUI是个好框架';
+				} else {
+					//info.innerText = 'MUI没有得到你的认可，继续加油'
+				}
+			})
+		});
+		function showqrode(){
+			$("#mask").show();
+		}
+		$("#mask").on('click',function (){
+			$("#mask").hide();
+		})
+	</script>
+
+</html>
